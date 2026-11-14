@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seu salário, seu mês — roteiro de apresentação</title>
+<meta name="description" content="Roteiro da palestra “Seu salário, seu mês — saúde financeira no dia a dia”: estrutura, slides, notas de fala e exercício prático.">
+<meta name="theme-color" content="#1f6f4a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231f6f4a'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='700' fill='white' text-anchor='middle'%3ER$%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #f7f5f0;
+    --surface: #ffffff;
+    --ink: #1f2a24;
+    --muted: #5b665f;
+    --line: #e3dfd5;
+    --accent: #1f6f4a;
+    --accent-ink: #ffffff;
+    --accent-soft: #e4f1ea;
+    --screen-bg: #17241d;
+    --screen-ink: #eef3ef;
+    --screen-muted: #a9b8ae;
+    --warn-bg: #fff6e2;
+    --warn-line: #e3b75a;
+    --warn-ink: #5e4508;
+    --b-ess-bg: #e4f1ea; --b-ess-ink: #1b5e3f;
+    --b-com-bg: #fcefd6; --b-com-ink: #7a4f00;
+    --b-aju-bg: #e3ecfa; --b-aju-ink: #1d4a86;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --radius: 14px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #111714;
+      --surface: #19211d;
+      --ink: #e5ebe7;
+      --muted: #a2ada6;
+      --line: #2b3631;
+      --accent: #6fcf9d;
+      --accent-ink: #0d1a13;
+      --accent-soft: #1d3127;
+      --screen-bg: #0a100d;
+      --screen-ink: #eef3ef;
+      --screen-muted: #93a399;
+      --warn-bg: #2a2412;
+      --warn-line: #8a6b22;
+      --warn-ink: #f0d58f;
+      --b-ess-bg: #1d3127; --b-ess-ink: #8fe0b5;
+      --b-com-bg: #33280f; --b-com-ink: #f2c66d;
+      --b-aju-bg: #172a45; --b-aju-ink: #9cc1f5;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 1.25rem; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 17px/1.65 var(--sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  h1, h2, h3, h4 { font-family: var(--serif); line-height: 1.2; color: var(--ink); }
+  p { margin: 0 0 .9em; }
+  strong { font-weight: 650; }
+
+  /* ---------- Cabeçalho ---------- */
+  .hero {
+    border-bottom: 1px solid var(--line);
+    background:
+      radial-gradient(1200px 400px at 85% -10%, var(--accent-soft), transparent 60%),
+      var(--bg);
+  }
+  .hero-inner { max-width: 1180px; margin: 0 auto; padding: 3.5rem 1.5rem 2.5rem; }
+  .kicker {
+    font-size: .8rem; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--accent); font-weight: 700; margin: 0 0 .8rem;
+  }
+  .hero h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); margin: 0 0 .4rem; letter-spacing: -.01em; }
+  .hero .sub { font-family: var(--serif); font-size: clamp(1.15rem, 2.2vw, 1.5rem); color: var(--muted); margin: 0 0 1.6rem; }
+  .chips { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0 0 1.6rem; padding: 0; list-style: none; }
+  .chips li {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 999px;
+    padding: .3rem .85rem; font-size: .9rem; color: var(--muted);
+  }
+  .chips li b { color: var(--ink); }
+  .tools { display: flex; flex-wrap: wrap; gap: .6rem; }
+  .btn {
+    font: inherit; font-size: .92rem; font-weight: 600; cursor: pointer;
+    border-radius: 10px; padding: .55rem 1rem; border: 1px solid var(--line);
+    background: var(--surface); color: var(--ink);
+  }
+  .btn:hover { border-color: var(--accent); }
+  .btn[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+  .btn:focus-visible, a:focus-visible, summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+  /* ---------- Layout ---------- */
+  .layout {
+    max-width: 1180px; margin: 0 auto; padding: 2rem 1.5rem 4rem;
+    display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 3rem;
+  }
+  .toc-wrap { position: sticky; top: 1.25rem; align-self: start; max-height: calc(100vh - 2.5rem); overflow: auto; }
+  .toc-wrap > summary { display: none; }
+  .toc { font-size: .9rem; }
+  .toc p { font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin: 0 0 .6rem; }
+  .toc ol { list-style: none; margin: 0; padding: 0; }
+  .toc ol ol { padding-left: .9rem; margin: .15rem 0 .4rem; border-left: 1px solid var(--line); }
+  .toc a {
+    display: block; padding: .22rem .5rem; border-radius: 8px;
+    color: var(--muted); text-decoration: none;
+  }
+  .toc a:hover { color: var(--ink); background: var(--surface); }
+  .toc a.ativo { color: var(--accent); font-weight: 650; background: var(--accent-soft); }
+
+  main { min-width: 0; max-width: 780px; }
+  section { margin-bottom: 3.5rem; }
+  section > h2 {
+    font-size: 1.85rem; margin: 0 0 1.1rem; padding-bottom: .5rem;
+    border-bottom: 2px solid var(--ink);
+  }
+  h3 { font-size: 1.35rem; margin: 2.2rem 0 1rem; display: flex; align-items: baseline; gap: .6rem; flex-wrap: wrap; }
+  h3 .tempo { font-family: var(--sans); font-size: .85rem; font-weight: 600; color: var(--muted); }
+
+  /* ---------- Visão geral ---------- */
+  .ficha { display: grid; gap: .9rem; margin-bottom: 1.6rem; }
+  .ficha div { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.2rem; }
+  .ficha dt { font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-bottom: .2rem; }
+  .ficha dd { margin: 0; }
+  .ideia {
+    margin: 0; padding: 1.6rem 1.8rem; border-radius: var(--radius);
+    background: var(--accent); color: var(--accent-ink);
+  }
+  .ideia p { font-family: var(--serif); font-size: 1.35rem; line-height: 1.45; margin: 0; }
+  .ideia footer { font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; margin-top: .8rem; opacity: .85; font-weight: 700; }
+
+  /* ---------- Roteiro ---------- */
+  .linha { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; margin: .4rem 0 1rem; padding: 0; list-style: none; }
+  .linha li { background: var(--accent-soft); color: var(--ink); border-radius: 999px; padding: .3rem .8rem; font-weight: 600; font-size: .92rem; }
+  .linha .seta { background: none; padding: 0; color: var(--muted); font-weight: 400; }
+
+  .faixa { display: flex; height: 54px; border-radius: 12px; overflow: hidden; margin: 1.4rem 0 .4rem; border: 1px solid var(--line); }
+  .faixa span {
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    font-size: .74rem; line-height: 1.2; text-align: center; padding: 0 .2rem;
+    border-right: 2px solid var(--bg); color: var(--ink); overflow: hidden; white-space: nowrap;
+  }
+  .faixa span:last-child { border-right: 0; }
+  .faixa span b { font-size: .8rem; }
+  .faixa .t1 { background: var(--accent-soft); background: color-mix(in srgb, var(--accent) 14%, var(--surface)); }
+  .faixa .t2 { background: var(--accent-soft); background: color-mix(in srgb, var(--accent) 28%, var(--surface)); }
+  .faixa-legenda { display: flex; justify-content: space-between; font-size: .78rem; color: var(--muted); margin-bottom: 1.4rem; }
+
+  .tabela { width: 100%; overflow-x: auto; margin: 0 0 1.4rem; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+  table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+  th, td { text-align: left; padding: .7rem .9rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 700; background: var(--bg); background: color-mix(in srgb, var(--line) 35%, var(--surface)); }
+  tr:last-child td { border-bottom: 0; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  td.nw { white-space: nowrap; }
+
+  .tres { display: grid; grid-template-columns: 1fr; gap: .7rem; margin-bottom: 1.6rem; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.1rem; }
+  .card h4 { margin: 0 0 .4rem; font-size: 1.05rem; }
+  .card p { margin: 0; font-size: .95rem; }
+
+  .fora { font-size: .95rem; color: var(--muted); }
+
+  /* ---------- Slides ---------- */
+  .legenda { display: flex; flex-wrap: wrap; gap: .5rem 1.2rem; font-size: .88rem; color: var(--muted); margin: 0 0 1rem; padding: 0; list-style: none; }
+  .legenda li { display: flex; align-items: center; gap: .45rem; }
+  .legenda i { display: inline-block; width: 14px; height: 14px; border-radius: 4px; }
+  .legenda .lg-tela { background: var(--screen-bg); }
+  .legenda .lg-fala { background: var(--accent); }
+  .legenda .lg-nota { background: var(--warn-line); }
+
+  .slide {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 1.2rem 1.3rem 1.1rem; margin-bottom: 1.1rem;
+  }
+  .slide-head { display: flex; align-items: center; gap: .75rem; margin-bottom: .9rem; }
+  .slide-num {
+    flex: none; width: 2.1rem; height: 2.1rem; border-radius: 10px;
+    display: grid; place-items: center; font-weight: 700; font-size: .95rem;
+    background: var(--ink); color: var(--bg); font-variant-numeric: tabular-nums;
+  }
+  .slide h4 { margin: 0; font-size: 1.2rem; }
+  .lbl {
+    display: block; font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 700;
+    margin-bottom: .35rem;
+  }
+  .tela {
+    background: var(--screen-bg); color: var(--screen-ink); border-radius: 10px;
+    padding: .85rem 1rem; margin-bottom: .9rem; font-size: .97rem;
+  }
+  .tela .lbl { color: var(--screen-muted); }
+  .tela p { margin: 0; }
+  .tela b { font-weight: 650; color: #fff; }
+  .fala { border-left: 3px solid var(--accent); padding: .1rem 0 .1rem 1rem; }
+  .fala .lbl { color: var(--accent); }
+  .fala .dito { margin: 0 0 .7rem; }
+  .fala .dito:last-child, .fala .dir:last-child { margin-bottom: 0; }
+  .fala .dir {
+    margin: 0 0 .7rem; font-style: italic; color: var(--muted); font-size: .94rem;
+    padding-left: 1.1rem; position: relative;
+  }
+  .fala .dir::before { content: "▸"; position: absolute; left: 0; font-style: normal; color: var(--accent); }
+  .nota {
+    margin-top: .9rem; background: var(--warn-bg); color: var(--warn-ink);
+    border: 1px solid var(--warn-line); border-radius: 10px; padding: .7rem .9rem; font-size: .92rem;
+  }
+  .nota p { margin: 0; }
+  .nota .lbl { color: inherit; }
+
+  body.so-falas .tela, body.so-falas .nota { display: none; }
+
+  /* ---------- Exercício ---------- */
+  .badge { display: inline-block; font-size: .78rem; font-weight: 700; padding: .12rem .55rem; border-radius: 999px; white-space: nowrap; }
+  .b-ess { background: var(--b-ess-bg); color: var(--b-ess-ink); }
+  .b-com { background: var(--b-com-bg); color: var(--b-com-ink); }
+  .b-aju { background: var(--b-aju-bg); color: var(--b-aju-ink); }
+
+  .entrada { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.2rem; margin-bottom: 1.2rem; }
+  .conta {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 1rem 1.2rem; margin: 0 0 1.6rem; max-width: 420px; font-variant-numeric: tabular-nums;
+  }
+  .conta h4 { margin: 0 0 .6rem; font-size: 1.05rem; }
+  .conta dl { margin: 0; display: grid; grid-template-columns: 1fr auto; gap: .3rem 1rem; }
+  .conta dt { color: var(--muted); }
+  .conta dd { margin: 0; text-align: right; }
+  .conta .sobra { border-top: 2px solid var(--ink); padding-top: .45rem; margin-top: .25rem; font-weight: 700; color: var(--ink); }
+  .conta .sobra + dd { border-top: 2px solid var(--ink); padding-top: .45rem; margin-top: .25rem; font-weight: 700; color: var(--accent); }
+
+  ol.passos { padding-left: 0; list-style: none; counter-reset: p; margin: 0 0 1.6rem; }
+  ol.passos li { counter-increment: p; position: relative; padding: 0 0 .9rem 2.6rem; }
+  ol.passos li::before {
+    content: counter(p); position: absolute; left: 0; top: .05rem;
+    width: 1.8rem; height: 1.8rem; border-radius: 50%; display: grid; place-items: center;
+    background: var(--accent-soft); color: var(--accent); font-weight: 700; font-size: .9rem;
+  }
+  .modelo td { height: 2.6rem; }
+
+  /* ---------- Resumo ---------- */
+  .mensagens { list-style: none; padding: 0; margin: 0; display: grid; gap: 1rem; counter-reset: m; }
+  .mensagens li {
+    counter-increment: m; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 1.2rem 1.3rem 1.1rem 4.2rem; position: relative;
+  }
+  .mensagens li::before {
+    content: counter(m); position: absolute; left: 1.2rem; top: 1rem;
+    font-family: var(--serif); font-size: 2.2rem; line-height: 1; color: var(--accent); font-weight: 700;
+  }
+  .mensagens strong { display: block; font-family: var(--serif); font-size: 1.2rem; margin-bottom: .3rem; }
+  .mensagens p { margin: 0; }
+
+  /* ---------- Notas de preparação ---------- */
+  details.prep { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); margin-bottom: 1rem; }
+  details.prep > summary {
+    cursor: pointer; padding: 1rem 1.2rem; font-weight: 650; list-style: none; display: flex; justify-content: space-between; gap: 1rem;
+  }
+  details.prep > summary::-webkit-details-marker { display: none; }
+  details.prep > summary::after { content: "+"; font-size: 1.3rem; line-height: 1; color: var(--accent); }
+  details.prep[open] > summary::after { content: "−"; }
+  details.prep .corpo { padding: 0 1.2rem 1.1rem; border-top: 1px solid var(--line); }
+  details.prep h4 { font-size: 1.05rem; margin: 1.1rem 0 .5rem; }
+  details.prep ul { margin: 0 0 .8rem; padding-left: 1.2rem; }
+  details.prep li { margin-bottom: .45rem; }
+
+  footer.rodape { border-top: 1px solid var(--line); color: var(--muted); font-size: .88rem; }
+  footer.rodape div { max-width: 1180px; margin: 0 auto; padding: 1.5rem; }
+
+  /* ---------- Responsivo ---------- */
+  @media (max-width: 960px) {
+    .layout { grid-template-columns: 1fr; gap: 1.5rem; padding-top: 1.2rem; }
+    .toc-wrap { position: static; max-height: none; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+    .toc-wrap > summary { display: block; cursor: pointer; padding: .8rem 1rem; font-weight: 650; }
+    .toc { padding: 0 .8rem .8rem; }
+    .toc p { display: none; }
+  }
+  @media (max-width: 640px) {
+    body { font-size: 16px; }
+    .hero-inner { padding: 2.4rem 1.1rem 1.8rem; }
+    .layout { padding-left: 1.1rem; padding-right: 1.1rem; }
+    .faixa span b { display: none; }
+    .faixa span small { font-size: .7rem; font-weight: 600; }
+    .resp thead { display: none; }
+    .resp tr { display: block; padding: .75rem .9rem; border-bottom: 1px solid var(--line); }
+    .resp tr:last-child { border-bottom: 0; }
+    .resp td { display: flex; gap: .6rem; padding: .12rem 0; border: 0; text-align: left; white-space: normal; }
+    .resp td::before {
+      content: attr(data-label); flex: 0 0 5.6rem; font-size: .7rem; letter-spacing: .06em;
+      text-transform: uppercase; color: var(--muted); font-weight: 700; padding-top: .25rem;
+    }
+    .resp td:first-child { font-weight: 650; margin-bottom: .2rem; }
+    .resp td:first-child::before { display: none; }
+    .slide { padding: 1rem; }
+    .mensagens li { padding-left: 3.4rem; }
+    .mensagens li::before { left: .95rem; }
+  }
+
+  /* ---------- Impressão ---------- */
+  @media print {
+    :root { --bg: #fff; --surface: #fff; --ink: #000; --muted: #444; --line: #ccc; --screen-bg: #f1f1f1; --screen-ink: #000; --screen-muted: #555; }
+    body { font-size: 11.5pt; }
+    .hero { background: none; }
+    .tools, .toc-wrap { display: none !important; }
+    .layout { display: block; padding: 0 0 1rem; }
+    main { max-width: none; }
+    .tela b { color: #000; }
+    .ideia { background: #fff; color: #000; border: 2px solid #000; }
+    .slide, .card, .mensagens li, .conta, table, tr { break-inside: avoid; }
+    section > h2, h3 { break-after: avoid; }
+    a { color: inherit; text-decoration: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <p class="kicker">Roteiro de apresentação</p>
+    <h1>Seu salário, seu mês</h1>
+    <p class="sub">Saúde financeira no dia a dia</p>
+    <ul class="chips">
+      <li><b>60 min</b> de palestra</li>
+      <li><b>22</b> slides</li>
+      <li>versão enxuta de <b>30 min</b></li>
+      <li>valores em reais são <b>fictícios</b></li>
+    </ul>
+    <div class="tools">
+      <button class="btn" id="btn-falas" type="button" aria-pressed="false">Mostrar só as falas</button>
+      <button class="btn" id="btn-imprimir" type="button">Imprimir ou salvar em PDF</button>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+
+  <details class="toc-wrap" open>
+    <summary>Sumário</summary>
+    <nav class="toc" aria-label="Sumário">
+      <p>Sumário</p>
+      <ol>
+        <li><a href="#visao-geral">Título, objetivo e duração</a></li>
+        <li><a href="#roteiro">Roteiro</a>
+          <ol><li><a href="#versao-30">Versão de 30 minutos</a></li></ol>
+        </li>
+        <li><a href="#slides">Slides e notas de fala</a>
+          <ol>
+            <li><a href="#bloco-abertura">Abertura</a></li>
+            <li><a href="#bloco-2">2. O dinheiro que entra</a></li>
+            <li><a href="#bloco-3">3. Conhecendo os gastos</a></li>
+            <li><a href="#bloco-4">4. Organizando o mês</a></li>
+            <li><a href="#bloco-5">5. Dívidas e parcelas</a></li>
+            <li><a href="#bloco-6">6. Imprevistos e objetivos</a></li>
+            <li><a href="#bloco-encerramento">Encerramento</a></li>
+          </ol>
+        </li>
+        <li><a href="#exercicio">Exercício: o mês da Ana</a></li>
+        <li><a href="#resumo">Resumo: três mensagens</a></li>
+        <li><a href="#preparacao">Notas de preparação</a></li>
+      </ol>
+    </nav>
+  </details>
+
+  <main>
+
+    <!-- ===================== VISÃO GERAL ===================== -->
+    <section id="visao-geral">
+      <h2>Título, objetivo e duração</h2>
+      <dl class="ficha">
+        <div><dt>Título</dt><dd>Seu salário, seu mês — um jeito simples de organizar o dinheiro do dia a dia</dd></div>
+        <div><dt>Objetivo em uma frase</dt><dd>Ajudar cada pessoa a enxergar quanto realmente recebe, para onde o dinheiro vai e quando as contas vencem, para planejar o mês dentro da sua própria realidade.</dd></div>
+        <div><dt>Duração</dt><dd>60 minutos, como indicam seus materiais. Ao final do roteiro há uma versão enxuta de 30 minutos, caso o tempo seja menor.</dd></div>
+      </dl>
+      <blockquote class="ideia">
+        <p>“Você não precisa ganhar muito para começar a cuidar do dinheiro. Precisa saber quanto entra, para onde vai e quando vence.”</p>
+        <footer>Ideia que guia tudo</footer>
+      </blockquote>
+    </section>
+
+    <!-- ===================== ROTEIRO ===================== -->
+    <section id="roteiro">
+      <h2>Roteiro</h2>
+      <p>A palestra segue uma linha só:</p>
+      <ol class="linha" aria-label="Linha da palestra">
+        <li>o que entra</li><li class="seta" aria-hidden="true">→</li>
+        <li>o que sai</li><li class="seta" aria-hidden="true">→</li>
+        <li>quando vence</li><li class="seta" aria-hidden="true">→</li>
+        <li>o que pesa no futuro</li><li class="seta" aria-hidden="true">→</li>
+        <li>como se proteger</li>
+      </ol>
+      <p>Se você se perder no meio, volte para essa linha.</p>
+
+      <div class="faixa" aria-hidden="true">
+        <span class="t1" style="flex:7"><b>Abertura</b><small>7 min</small></span>
+        <span class="t2" style="flex:7"><b>Entra</b><small>7 min</small></span>
+        <span class="t1" style="flex:10"><b>Gastos</b><small>10 min</small></span>
+        <span class="t2" style="flex:14"><b>Mês</b><small>14 min</small></span>
+        <span class="t1" style="flex:10"><b>Dívidas</b><small>10 min</small></span>
+        <span class="t2" style="flex:6"><b>Imprev.</b><small>6 min</small></span>
+        <span class="t1" style="flex:6"><b>Fim</b><small>6 min</small></span>
+      </div>
+      <div class="faixa-legenda" aria-hidden="true"><span>0 min</span><span>30 min</span><span>60 min</span></div>
+
+      <div class="tabela resp">
+        <table>
+          <thead>
+            <tr><th>Parte</th><th>Tempo</th><th>Slides</th><th>O que a pessoa deve levar</th></tr>
+          </thead>
+          <tbody>
+            <tr><td data-label="Parte"><a href="#bloco-abertura">Abertura</a></td><td data-label="Tempo" class="nw">0–7 min</td><td data-label="Slides" class="nw">1–3</td><td data-label="O que levar">Não saber para onde vai o dinheiro é comum e não é falha de caráter.</td></tr>
+            <tr><td data-label="Parte"><a href="#bloco-2">2. O dinheiro que entra</a></td><td data-label="Tempo" class="nw">7–14 min</td><td data-label="Slides" class="nw">4–5</td><td data-label="O que levar">O salário do contrato não é o dinheiro que cai na conta.</td></tr>
+            <tr><td data-label="Parte"><a href="#bloco-3">3. Conhecendo os gastos</a></td><td data-label="Tempo" class="nw">14–24 min</td><td data-label="Slides" class="nw">6–9</td><td data-label="O que levar">Gastos têm tipos diferentes; lazer faz parte da vida.</td></tr>
+            <tr><td data-label="Parte"><a href="#bloco-4">4. Organizando o mês</a></td><td data-label="Tempo" class="nw">24–38 min</td><td data-label="Slides" class="nw">10–12</td><td data-label="O que levar">Anotar entradas, saídas e datas de vencimento já muda o mês.</td></tr>
+            <tr><td data-label="Parte"><a href="#bloco-5">5. Dívidas e parcelas</a></td><td data-label="Tempo" class="nw">38–48 min</td><td data-label="Slides" class="nw">13–16</td><td data-label="O que levar">Limite não é salário; parcela tem um valor total.</td></tr>
+            <tr><td data-label="Parte"><a href="#bloco-6">6. Imprevistos e pequenos objetivos</a></td><td data-label="Tempo" class="nw">48–54 min</td><td data-label="Slides" class="nw">17–18</td><td data-label="O que levar">Guardar começa pequeno e no ritmo possível.</td></tr>
+            <tr><td data-label="Parte"><a href="#bloco-encerramento">Encerramento</a></td><td data-label="Tempo" class="nw">54–60 min</td><td data-label="Slides" class="nw">19–21</td><td data-label="O que levar">Três ideias e uma tarefa simples para a semana.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="tres">
+        <div class="card"><h4>Abertura</h4><p>Comece pela pergunta do salário, sem slide carregado. Deixe claro que ninguém está ali para ser julgado. Dois dados do Banco Central mostram que a dificuldade é comum.</p></div>
+        <div class="card"><h4>Desenvolvimento</h4><p>Os blocos 2 a 6 usam a mesma pessoa fictícia, a Ana, do início ao fim. Assim, o público acompanha uma história, e não números soltos. A Bia, outra pessoa fictícia, aparece só no bloco 5 para mostrar quando a renda não cobre o básico.</p></div>
+        <div class="card"><h4>Encerramento</h4><p>Não traga conteúdo novo. Retome as três ideias, proponha a atividade da semana e termine com a frase final.</p></div>
+      </div>
+
+      <h3 id="versao-30">Versão de 30 minutos <span class="tempo">(sugestão)</span></h3>
+      <div class="tabela">
+        <table>
+          <thead><tr><th>Parte</th><th>Tempo</th><th>Slides</th></tr></thead>
+          <tbody>
+            <tr><td>Abertura</td><td class="nw">0–4 min</td><td>1–2</td></tr>
+            <tr><td>Dinheiro que entra</td><td class="nw">4–8 min</td><td>4</td></tr>
+            <tr><td>Gastos</td><td class="nw">8–14 min</td><td>6 e 8</td></tr>
+            <tr><td>Organizando o mês</td><td class="nw">14–21 min</td><td>10–11 (exercício só com a Ana)</td></tr>
+            <tr><td>Dívidas e parcelas</td><td class="nw">21–26 min</td><td>13, 14 e 16</td></tr>
+            <tr><td>Imprevistos</td><td class="nw">26–28 min</td><td>17</td></tr>
+            <tr><td>Encerramento</td><td class="nw">28–30 min</td><td>19–20</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="fora"><strong>Ficam de fora:</strong> os dados do Banco Central, o slide do holerite, os pequenos gastos repetidos, o calendário, o slide dos juros e os pequenos objetivos.</p>
+    </section>
+
+    <!-- ===================== SLIDES ===================== -->
+    <section id="slides">
+      <h2>Slides e notas de fala</h2>
+      <p>Uma ideia por slide. <strong>“Na tela”</strong> é o texto que aparece; <strong>“Fala”</strong> é o que você diz, com suas palavras. Todos os valores em reais são <strong>exemplos fictícios</strong>.</p>
+      <ul class="legenda">
+        <li><i class="lg-tela"></i>Na tela</li>
+        <li><i class="lg-fala"></i>Fala (o que você diz)</li>
+        <li><i class="lg-nota"></i>Confira antes de apresentar</li>
+        <li>▸ <em>Itálico: orientação para você, não é para ler em voz alta</em></li>
+      </ul>
+
+      <!-- Abertura -->
+      <h3 id="bloco-abertura">Abertura <span class="tempo">0–7 min · slides 1–3</span></h3>
+
+      <article class="slide" id="slide-1">
+        <div class="slide-head"><span class="slide-num">1</span><h4>Seu salário, seu mês</h4></div>
+        <div class="tela"><span class="lbl">Na tela</span><p>Título e a frase <b>“Uma conversa simples sobre o dinheiro do dia a dia”</b>.</p></div>
+        <div class="fala"><span class="lbl">Fala</span>
+          <p class="dito">Bom dia. Hoje não vou falar de ficar rico nem de investimento. Vou falar do dinheiro que passa pela nossa mão todo mês. E quero que seja uma conversa, não uma aula.</p>
+        </div>
+      </article>
+
+      <article class="slide" id="slide-2">
+        <div class="slide-head"><span class="slide-num">2</span><h4>Você sabe para onde vai seu salário?</h4></div>
+        <div class="tela"><span class="lbl">Na tela</span><p>Só a pergunta.</p></div>
+        <div class="fala"><span class="lbl">Fala</span>
+          <p class="dito">Quem aqui já chegou perto do fim do mês e pensou: o dinheiro acabou, mas o mês não?</p>
+          <p class="dir">Espere as mãos se levantarem.</p>
+          <p class="dito">E se eu perguntasse agora quanto você gastou no mês passado, você saberia responder?</p>
+          <p class="dir">Não peça resposta. Faça uma pausa e siga.</p>
+        </div>
+      </article>
+
+      <article class="slide" id="slide-3">
+        <div class="slide-head"><span class="slide-num">3</span><h4>Você não está sozinho</h4></div>
+        <div class="tela"><span class="lbl">Na tela</span><p><b>“Mais da metade não faz orçamento”</b> e <b>“7 em cada 10 não guardaram nada em um ano”</b>. Fonte embaixo.</p></div>
+        <div class="fala"><span class="lbl">Fala</span>
+          <p class="dito">Uma pesquisa do Banco Central mostrou isso. Orçamento é só anotar quanto entra e quanto sai. Isso não quer dizer que as pessoas não saibam cuidar do dinheiro. Muitas vezes, a gente aprendeu a trabalhar, mas ninguém ensinou a gente a organizar o salário. E às vezes o dinheiro simplesmente não dá. Por isso, aqui ninguém está sendo julgado.</p>
+        </div>
+        <aside class="nota"><span class="lbl">Confira antes</span><p>Antes de apresentar, confirme os números (56% e 69%) e o ano da pesquisa no site do Banco Central.</p></aside>
+      </article>
+
+      <!-- Bloco 2 -->
+      <h3 id="bloco-2">Bloco 2 — O dinheiro que entra <span class="tempo">7–14 min · slides 4–5</span></h3>
+
+      <article class="slide" id="slide-4">
+        <div class="slide-head"><span class="slide-num">4</span><h4>Salário no papel × dinheiro na mão</h4></div>
+        <div class="tela"><span class="lbl">Na tela</span><p><b>“Salário no contrato: R$&nbsp;2.800 → Cai na conta: R$&nbsp;2.500”</b> (exemplo fictício).</p></div>
+        <div class="fala"><span class="lbl">Fala</span>
+          <p class="dito">Esta é a Ana. Ela não existe, mas vai nos acompanhar hoje. No contrato, o salário dela é R$&nbsp;2.800. Esse é o salário bruto, o valor antes dos descontos. O que cai na conta é R$&nbsp;2.500. Esse é o salário líquido, o que sobra depois dos descontos. Para organizar o mês, o planejamento começa pelo líquido. É com ele que a Ana paga as contas.</p>
+        </div>
+      </article>
+
+      <article class="slide" id="slide-5">
+        <div class="slide-head"><span class="slide-num">5</span><h4>Confira seu holerite</h4></div>
+        <div class="tela"><span class="lbl">Na tela</span><p><b>“Holerite = o papel que mostra o que entrou e o que foi descontado”</b> e três exemplos: aposentadoria (INSS), vale-transporte, empréstimo descontado em folha.</p></div>
+        <div class="fala"><span class="lbl">Fala</span>
+          <p class="dito">O holerite, ou contracheque, mostra cada desconto. Alguns são obrigatórios, como a contribuição para a aposentadoria. Outros dependem de cada um, como plano de saúde ou um empréstimo descontado direto do salário. No exemplo da Ana, os descontos somam R$&nbsp;300. Os valores são inventados e não servem de referência para um cálculo real. Se parte do que você recebe muda de um mês para o outro, como comissão ou hora extra, uma dica é planejar o mês pelo valor que você tem certeza de receber.</p>
+        </div>
+      </article>
+
+      <!-- Bloco 3 -->
+      <h3 id="bloco-3">Bloco 3 — Conhecendo os gastos <span class="tempo">14–24 min · slides 6–9</span></h3>
+
+      <article class="slide" id="slide-6">
+        <div class="slide-head"><span class="slide-num">6</span><h4>Três tipos de gasto</h4></div>
+        <div class="tela"><span class="lbl">Na tela</span><p><b>Essenciais</b> · <b>Compromissos</b> · <b>Ajustáveis</b>.</p></div>
+        <div class="fala"><span class="lbl">Fala</span>
+          <p class="dito">Essenciais mantêm a vida funcionando: aluguel, mercado, luz, água, transporte, remédios. Compromissos são valores que você já prometeu pagar: parcelas, empréstimos, acordos. Ajustáveis são os gastos que dá para aumentar, diminuir ou adiar: delivery, lazer, roupas, assinaturas. Internet, por exemplo, pode ser essencial para quem trabalha ou estuda com ela. Cada pessoa decide o que é essencial na própria vida.</p>
+        </div>
+      </article>
+
+      <article class="slide" id="slide-7">
+        <div class="slide-head"><span class="slide-num">7</span><h4>Lazer não é desperdício</h4></div>
+        <div class="tela"><span class="lbl">Na tela</span><p><b>“O objetivo não é gastar menos em tudo. É escolher melhor.”</b></p></div>
+        <div class="fala"><span class="lbl">Fala</span>
+          <p class="dito">Eu não vou dizer para vocês pararem de sair ou de pedir um lanche. Dinheiro também serve para viver. A ideia é que o lazer seja uma escolha, e não algo que some sem a gente perceber.</p>
+        </div>
+      </article>
+
+      <article class="slide" id="slide-8">
+        <div class="slide-head"><span class="slide-num">8</span><h4>Quatro tipos de gasto que consomem o dinheiro</h4></div>
+        <div class="tela"><span class="lbl">Na tela</span><p>A sua imagem (formiga, fantasma, vampiro e zumbi).</p></div>
+        <div class="fala"><span class="lbl">Fala</span>
+          <p class="dito">Uma forma divertida de lembrar. <strong>Formiga:</strong> valores pequenos que se somam, como café e lanche. <strong>Fantasma:</strong> cobranças que se repetem por algo que você nem usa mais, como uma assinatura esquecida. <strong>Vampiro:</strong> desperdícios nas contas de casa, como luz acesa ou torneira pingando. <strong>Zumbi:</strong> juros e multas que voltam todo mês, como os de uma conta paga com atraso.</p>
+          <p class="dir">Use um tom leve. O zumbi não é culpa de ninguém; é só um custo que vale a pena enxergar.</p>
+        </div>
+      </article>
+
+      <article class="slide" id="slide-9">
+        <div class="slide-head"><span class="slide-num">9</span><h4>O gasto pequeno que se repete</h4></div>
+        <div class="tela"><span class="lbl">Na tela</span><p><b>“R$&nbsp;10 por dia × 30 dias = R$&nbsp;300 no mês”</b>.</p></div>
+        <div class="fala"><span class="lbl">Fala</span>
+          <p class="dito">R$&nbsp;10 parece pouco. Repetido todo dia, vira R$&nbsp;300 no mês. O problema não é o café. É não perceber quanto ele soma. Se fizer sentido para você, ótimo. O importante é que seja uma decisão consciente.</p>
+        </div>
+      </article>
+
+      <!-- Bloco 4 -->
+      <h3 id="bloco-4">Bloco 4 — Organizando o mês <span class="tempo">24–38 min · slides 10–12</span></h3>
+
+      <article class="slide" id="slide-10">
+        <div class="slide-head"><span class="slide-num">10</span><h4>Entrou, saiu, quando vence</h4></div>
+        <div class="tela"><span class="lbl">Na tela</span><p>Três colunas — <b>Entradas</b> · <b>Saídas</b> · <b>Data de vencimento</b>.</p></div>
+        <div class="fala"><span class="lbl">Fala</span>
+          <p class="dito">Para organizar o mês, bastam três informações: quanto entra, quanto sai e quando cada conta vence. Vencimento é o último dia para pagar sem multa. Dá para anotar no caderno, no celular ou numa planilha. O melhor jeito é aquele que você vai usar.</p>
+        </div>
+      </article>
+
+      <article class="slide" id="slide-11">
+        <div class="slide-head"><span class="slide-num">11</span><h4>O mês da Ana</h4></div>
+        <div class="tela"><span class="lbl">Na tela</span><p>A tabela do exercício prático, com os totais (exemplo fictício).</p></div>
+        <div class="fala"><span class="lbl">Fala</span>
+          <p class="dir">Siga o roteiro do <a href="#exercicio">exercício prático</a>, mais abaixo. Mostre que, depois de tudo, sobram R$&nbsp;160 para a Ana. Pergunte:</p>
+          <p class="dito">O que a Ana poderia fazer com esses R$&nbsp;160?</p>
+          <p class="dir">Aceite as respostas sem dizer que existe uma única resposta certa.</p>
+        </div>
+      </article>
+
+      <article class="slide" id="slide-12">
+        <div class="slide-head"><span class="slide-num">12</span><h4>O calendário do mês</h4></div>
+        <div class="tela"><span class="lbl">Na tela</span><p>Uma linha do tempo do mês com o salário no dia 5 e as contas nos dias 10, 15 e 20.</p></div>
+        <div class="fala"><span class="lbl">Fala</span>
+          <p class="dito">O salário da Ana cai no dia 5. A fatura do cartão vence no dia 20. Se ela não separar esse dinheiro no dia 5, ele pode ser gasto antes. Olhar as datas ajuda a evitar atraso, e atraso costuma gerar multa e juros.</p>
+        </div>
+      </article>
+
+      <!-- Bloco 5 -->
+      <h3 id="bloco-5">Bloco 5 — Dívidas e compras parceladas <span class="tempo">38–48 min · slides 13–16</span></h3>
+
+      <article class="slide" id="slide-13">
+        <div class="slide-head"><span class="slide-num">13</span><h4>Limite não é salário</h4></div>
+        <div class="tela"><span class="lbl">Na tela</span><p><b>“Salário: R$&nbsp;2.500 · Limite do cartão: R$&nbsp;4.000 · Seu salário continua sendo R$&nbsp;2.500”</b>.</p></div>
+        <div class="fala"><span class="lbl">Fala</span>
+          <p class="dito">Limite é o valor máximo que o banco deixa você gastar no cartão. É um empréstimo, não é dinheiro seu. O cartão muda o dia em que você paga. Ele não aumenta o seu salário.</p>
+        </div>
+      </article>
+
+      <article class="slide" id="slide-14">
+        <div class="slide-head"><span class="slide-num">14</span><h4>A parcela e o total</h4></div>
+        <div class="tela"><span class="lbl">Na tela</span><p><b>“Celular: 10 × R$&nbsp;150 = R$&nbsp;1.500”</b> e <b>“Todas as parcelas juntas: R$&nbsp;650 por mês”</b>.</p></div>
+        <div class="fala"><span class="lbl">Fala</span>
+          <p class="dito">Parcelar é dividir uma compra em vários pagamentos. R$&nbsp;150 parece leve, mas são R$&nbsp;1.500 no total e uma parte do salário comprometida por dez meses. Agora imagine: celular R$&nbsp;150, roupa R$&nbsp;80, tênis R$&nbsp;100, TV R$&nbsp;120 e um empréstimo de R$&nbsp;200. São R$&nbsp;650 por mês, mais de um quarto de um salário de R$&nbsp;2.500. A pergunta não é só “cabe no mês?”. É “quanto vou pagar no total e por quantos meses?”</p>
+        </div>
+      </article>
+
+      <article class="slide" id="slide-15">
+        <div class="slide-head"><span class="slide-num">15</span><h4>Juros: o preço de pagar depois</h4></div>
+        <div class="tela"><span class="lbl">Na tela</span><p><b>“À vista: R$&nbsp;1.000 · Parcelado: 10 × R$&nbsp;120 = R$&nbsp;1.200”</b>.</p></div>
+        <div class="fala"><span class="lbl">Fala</span>
+          <p class="dito">Juros são o valor a mais que você paga por usar um dinheiro que ainda não tem. Neste exemplo, pagar depois custou R$&nbsp;200 a mais. Dois casos merecem atenção: o cheque especial, que é um empréstimo automático quando a conta fica no negativo, e o rotativo do cartão, que é quando você paga só parte da fatura e o resto vira dívida com juros. Os dois costumam ser caros. Antes de parcelar ou pegar crédito, olhe o valor total.</p>
+        </div>
+        <aside class="nota"><span class="lbl">Confira antes</span><p>Se quiser citar a taxa média do Banco Central para crédito pessoal, confirme o número e o mês no site do BC antes.</p></aside>
+      </article>
+
+      <article class="slide" id="slide-16">
+        <div class="slide-head"><span class="slide-num">16</span><h4>Quando a conta não fecha</h4></div>
+        <div class="tela"><span class="lbl">Na tela</span><p><b>“Renda: R$&nbsp;1.800 · Gastos essenciais: R$&nbsp;1.950 · Faltam R$&nbsp;150”</b> e três caminhos: <b>reorganizar gastos · renegociar dívidas · buscar mais renda</b>.</p></div>
+        <div class="fala"><span class="lbl">Fala</span>
+          <p class="dito">Esta é a Bia, outra pessoa fictícia. Só o básico dela já passa da renda. Aqui não adianta dizer “corta o cafezinho”. Nenhuma economia transforma R$&nbsp;1.800 em R$&nbsp;1.950. Organizar ajuda a enxergar o problema, mas, por si só, não resolve a falta de dinheiro para o básico. Existem três caminhos, e muitas vezes eles se combinam: reorganizar o que der, conversar com as pessoas ou empresas a quem você deve para renegociar prazos e valores, e procurar formas de aumentar a renda quando isso for possível. Ter dívida não faz de ninguém uma pessoa pior.</p>
+        </div>
+      </article>
+
+      <!-- Bloco 6 -->
+      <h3 id="bloco-6">Bloco 6 — Imprevistos e pequenos objetivos <span class="tempo">48–54 min · slides 17–18</span></h3>
+
+      <article class="slide" id="slide-17">
+        <div class="slide-head"><span class="slide-num">17</span><h4>Imprevisto acontece</h4></div>
+        <div class="tela"><span class="lbl">Na tela</span><p>Uma escada: <b>R$&nbsp;100 → R$&nbsp;500 → R$&nbsp;1.000 → 1 mês de despesas</b>.</p></div>
+        <div class="fala"><span class="lbl">Fala</span>
+          <p class="dito">Geladeira que quebra, remédio que não estava previsto, alguns dias sem trabalhar. Quando não há nada guardado, o imprevisto costuma virar dívida. A reserva de emergência é um dinheiro separado só para isso. Ninguém precisa começar com seis meses de salário. O primeiro degrau pode ser R$&nbsp;100. E, se hoje não sobra nada, tudo bem. O primeiro passo é fazer a conta fechar.</p>
+        </div>
+      </article>
+
+      <article class="slide" id="slide-18">
+        <div class="slide-head"><span class="slide-num">18</span><h4>Um pequeno objetivo</h4></div>
+        <div class="tela"><span class="lbl">Na tela</span><p><b>“O quê? · Quanto? · Até quando?”</b></p></div>
+        <div class="fala"><span class="lbl">Fala</span>
+          <p class="dito">Um objetivo pode ser pequeno: comprar o material escolar sem parcelar, pagar uma conta atrasada, juntar para um passeio. Dar nome, valor e prazo ajuda a sair do “um dia eu guardo”. O valor certo é o que cabe na sua realidade, não na de outra pessoa.</p>
+        </div>
+      </article>
+
+      <!-- Encerramento -->
+      <h3 id="bloco-encerramento">Encerramento <span class="tempo">54–60 min · slides 19–21 (+ 22 de apoio)</span></h3>
+
+      <article class="slide" id="slide-19">
+        <div class="slide-head"><span class="slide-num">19</span><h4>Três ideias para levar</h4></div>
+        <div class="tela"><span class="lbl">Na tela</span><p>As três mensagens do <a href="#resumo" style="color:inherit">resumo final</a>.</p></div>
+        <div class="fala"><span class="lbl">Fala</span>
+          <p class="dir">Leia cada uma devagar, com uma pausa entre elas. Não acrescente conteúdo novo.</p>
+        </div>
+      </article>
+
+      <article class="slide" id="slide-20">
+        <div class="slide-head"><span class="slide-num">20</span><h4>Experimente esta semana</h4></div>
+        <div class="tela"><span class="lbl">Na tela</span><p><b>“Pegue o holerite · Liste as contas do mês · Anote a data de cada vencimento”</b>.</p></div>
+        <div class="fala"><span class="lbl">Fala</span>
+          <p class="dito">Não precisa mudar tudo. Esta semana, faça só isso: veja quanto realmente cai na sua conta, liste as contas do mês e escreva o dia de vencimento de cada uma. Se der, anote também o que você gastar nos próximos sete dias. Quem quiser pode usar o modelo do exercício.</p>
+        </div>
+      </article>
+
+      <article class="slide" id="slide-21">
+        <div class="slide-head"><span class="slide-num">21</span><h4>Frase final</h4></div>
+        <div class="tela"><span class="lbl">Na tela</span><p><b>“Saúde financeira começa quando você aprende a enxergar o dinheiro que já passa pelas suas mãos.”</b></p></div>
+        <div class="fala"><span class="lbl">Fala</span>
+          <p class="dito">Talvez você não consiga mudar sua renda amanhã. Talvez não consiga cortar todas as despesas. Mas pode começar a entender para onde o seu dinheiro vai. Obrigado.</p>
+        </div>
+      </article>
+
+      <article class="slide" id="slide-22">
+        <div class="slide-head"><span class="slide-num">22</span><h4>Fontes (apoio)</h4></div>
+        <div class="tela"><span class="lbl">Na tela</span><p>As referências do Banco Central, da CVM e da SUSEP que já estão no seu material.</p></div>
+        <div class="fala"><span class="lbl">Fala</span>
+          <p class="dir">Deixe este slide no fim, sem apresentá-lo.</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- ===================== EXERCÍCIO ===================== -->
+    <section id="exercicio">
+      <h2>Exercício prático: o mês da Ana</h2>
+      <p>Depois de anotar tudo, sobram R$&nbsp;160 para a Ana no mês. Todos os valores e datas são <strong>fictícios</strong>.</p>
+
+      <div class="entrada"><strong>Entrada:</strong> salário líquido de R$&nbsp;2.500, que cai no dia 5 (bruto de R$&nbsp;2.800 menos R$&nbsp;300 de descontos).</div>
+
+      <div class="tabela resp">
+        <table>
+          <thead><tr><th>Gasto</th><th>Tipo</th><th class="num">Valor (R$)</th><th>Vence</th></tr></thead>
+          <tbody>
+            <tr><td data-label="Gasto">Aluguel</td><td data-label="Tipo"><span class="badge b-ess">Essencial</span></td><td data-label="Valor (R$)" class="num">850</td><td data-label="Vence">dia 10</td></tr>
+            <tr><td data-label="Gasto">Mercado</td><td data-label="Tipo"><span class="badge b-ess">Essencial</span></td><td data-label="Valor (R$)" class="num">550</td><td data-label="Vence">ao longo do mês</td></tr>
+            <tr><td data-label="Gasto">Luz, água e gás</td><td data-label="Tipo"><span class="badge b-ess">Essencial</span></td><td data-label="Valor (R$)" class="num">180</td><td data-label="Vence">dia 15</td></tr>
+            <tr><td data-label="Gasto">Internet e celular</td><td data-label="Tipo"><span class="badge b-ess">Essencial</span></td><td data-label="Valor (R$)" class="num">100</td><td data-label="Vence">dia 15</td></tr>
+            <tr><td data-label="Gasto">Remédios</td><td data-label="Tipo"><span class="badge b-ess">Essencial</span></td><td data-label="Valor (R$)" class="num">60</td><td data-label="Vence">ao longo do mês</td></tr>
+            <tr><td data-label="Gasto">Parcela do celular (4 de 10)</td><td data-label="Tipo"><span class="badge b-com">Compromisso</span></td><td data-label="Valor (R$)" class="num">150</td><td data-label="Vence">dia 20 (fatura do cartão)</td></tr>
+            <tr><td data-label="Gasto">Parcela da loja de roupas</td><td data-label="Tipo"><span class="badge b-com">Compromisso</span></td><td data-label="Valor (R$)" class="num">80</td><td data-label="Vence">dia 20 (fatura do cartão)</td></tr>
+            <tr><td data-label="Gasto">Delivery e lanches</td><td data-label="Tipo"><span class="badge b-aju">Ajustável</span></td><td data-label="Valor (R$)" class="num">160</td><td data-label="Vence">ao longo do mês</td></tr>
+            <tr><td data-label="Gasto">Duas assinaturas de streaming</td><td data-label="Tipo"><span class="badge b-aju">Ajustável</span></td><td data-label="Valor (R$)" class="num">60</td><td data-label="Vence">dia 20 (fatura do cartão)</td></tr>
+            <tr><td data-label="Gasto">Lazer</td><td data-label="Tipo"><span class="badge b-aju">Ajustável</span></td><td data-label="Valor (R$)" class="num">150</td><td data-label="Vence">ao longo do mês</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="conta">
+        <h4>Totais conferidos</h4>
+        <dl>
+          <dt>Salário líquido</dt><dd>R$&nbsp;2.500</dd>
+          <dt>− Essenciais</dt><dd>R$&nbsp;1.740</dd>
+          <dt>− Compromissos</dt><dd>R$&nbsp;230</dd>
+          <dt>− Ajustáveis</dt><dd>R$&nbsp;370</dd>
+          <dt>Total de gastos</dt><dd>R$&nbsp;2.340</dd>
+          <dt class="sobra">Sobra</dt><dd>R$&nbsp;160</dd>
+        </dl>
+      </div>
+
+      <h3>Como conduzir <span class="tempo">cerca de 10 minutos</span></h3>
+      <ol class="passos">
+        <li>Mostre só a entrada e pergunte: “Quanto vocês acham que sobra para a Ana?”</li>
+        <li>Revele os gastos aos poucos, por tipo, e some junto com o público.</li>
+        <li>Mostre o calendário: a fatura do dia 20 soma R$&nbsp;290 (R$&nbsp;150 + R$&nbsp;80 + R$&nbsp;60). Se a Ana separar esse valor no dia 5, a fatura não a pega de surpresa.</li>
+        <li>Pergunte: “Se a Ana quisesse que sobrasse um pouco mais, onde ela mexeria?” Mostre que a escolha é dela: pode reduzir o delivery, cancelar uma assinatura que não usa ou manter tudo como está.</li>
+        <li>Feche: “A Ana não ganhou nem um real a mais. Ela só passou a enxergar o mês dela.”</li>
+      </ol>
+
+      <h3>Modelo para o público preencher</h3>
+      <div class="tabela modelo">
+        <table>
+          <thead><tr><th>Entrada ou gasto</th><th>Tipo (essencial, compromisso ou ajustável)</th><th>Valor (R$)</th><th>Dia de vencimento</th></tr></thead>
+          <tbody>
+            <tr><td>Salário que cai na conta</td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>No fim: <strong>total das entradas − total dos gastos = quanto sobra ou quanto falta.</strong> Avise que ninguém precisa mostrar o próprio papel.</p>
+    </section>
+
+    <!-- ===================== RESUMO ===================== -->
+    <section id="resumo">
+      <h2>Resumo final: três mensagens</h2>
+      <ol class="mensagens">
+        <li><strong>Conheça o dinheiro que realmente entra.</strong><p>O planejamento começa pelo salário líquido, o que cai na conta.</p></li>
+        <li><strong>Saiba para onde ele vai e quando cada conta vence.</strong><p>Anotar entradas, gastos e datas já ajuda a fazer escolhas, inclusive as de lazer.</p></li>
+        <li><strong>Olhe o total, não só a parcela, e proteja-se no seu ritmo.</strong><p>Limite não é salário. Guardar começa pequeno. E, quando a renda não cobre o básico, organizar ajuda, mas, por si só, não resolve o problema.</p></li>
+      </ol>
+    </section>
+
+    <!-- ===================== PREPARAÇÃO ===================== -->
+    <section id="preparacao">
+      <h2>Notas de preparação</h2>
+      <p class="fora">Bastidores do roteiro, para quem vai apresentar.</p>
+
+      <details class="prep" open>
+        <summary>O que falta você confirmar ou informar</summary>
+        <div class="corpo">
+          <ul>
+            <li>Os números do Banco Central (56%, 69%, 15,1 milhões e a taxa média de 63% ao ano em abril de 2026). Eles não foram verificados na fonte. Confira valor, ano e nome da pesquisa no site do BC antes de usar.</li>
+            <li>Quem é o público: colegas da mesma empresa ou de fora, quantas pessoas, se terão papel e caneta.</li>
+            <li>Se a duração é mesmo 60 minutos ou se a versão de 30 minutos serve melhor.</li>
+            <li>Como você quer se apresentar no início. O roteiro não traz nada sobre você além de ser analista financeiro da área de comissionamento.</li>
+            <li>Se haverá material impresso (como o modelo do exercício) para entregar ao público.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="prep">
+        <summary>O que foi simplificado ou reorganizado</summary>
+        <div class="corpo">
+          <p style="margin-top:1rem">Os três arquivos (apresentação de 24 slides e dois roteiros) foram unidos em uma sequência só, na ordem que você pediu. A imagem dos quatro tipos de gasto virou o slide 8.</p>
+
+          <h4>Reorganizado</h4>
+          <ul>
+            <li>Os dois roteiros tinham tempos, números de slide e frases diferentes para o mesmo tema. Ficou um roteiro único, com tempos que somam 60 minutos.</li>
+            <li>Os exemplos usavam salários de R$&nbsp;2.500 e R$&nbsp;3.000, limites de R$&nbsp;4.000 e R$&nbsp;5.000, parcelas de 10 × R$&nbsp;150 e 12 × R$&nbsp;100. Agora há uma única pessoa fictícia, a Ana, com R$&nbsp;2.500 líquidos, do começo ao fim.</li>
+            <li>As categorias “necessidades, desejos e futuro” viraram “essenciais, compromissos e ajustáveis”, como você pediu. O “futuro” foi para o bloco 6.</li>
+            <li>Os dados do Banco Central saíram do meio da palestra e ficaram em um único slide na abertura.</li>
+          </ul>
+
+          <h4>Acrescentado (não estava no material)</h4>
+          <ul>
+            <li>Salário bruto × líquido e o holerite (bloco 2), com descontos fictícios.</li>
+            <li>Datas de vencimento e o calendário do mês (bloco 4).</li>
+            <li>O exemplo de juros (R$&nbsp;1.000 à vista ou 10 × R$&nbsp;120 parcelado) e a explicação do cheque especial e do rotativo.</li>
+            <li>Explicação de cada termo na primeira vez em que aparece.</li>
+          </ul>
+
+          <h4>Retirado ou reduzido</h4>
+          <ul>
+            <li>O slide “E os investimentos?” e a sequência de seis passos até investir. Saíram para não recomendar produtos. Se alguém perguntar, a resposta do seu roteiro de estudo serve bem: depende do objetivo, do prazo e do perfil de risco de cada um.</li>
+            <li>O “Desafio dos 12 meses” (jogo). O material não traz as regras nem as cartas. Se quiser mantê-lo, ele pode substituir o exercício da Ana.</li>
+            <li>O checklist de 30 dias com “aumentar a renda em R$&nbsp;___” e “guardar pelo menos R$&nbsp;___”. Virou uma tarefa de uma semana, sem meta de valor, para não soar como cobrança.</li>
+            <li>Frases como “Quanto dinheiro eu tenho? Zero” no slide do limite, que podiam confundir. O sentido foi mantido em “limite é empréstimo, não é dinheiro seu”.</li>
+            <li>A lista longa de ideias de renda extra. Ficou “buscar mais renda quando possível”, sem prometer resultado.</li>
+          </ul>
+
+          <p><strong>Cálculos conferidos:</strong> R$&nbsp;10 × 30 = R$&nbsp;300; 10 × R$&nbsp;150 = R$&nbsp;1.500; R$&nbsp;150 + 80 + 100 + 120 + 200 = R$&nbsp;650; R$&nbsp;2.800 − R$&nbsp;300 = R$&nbsp;2.500; mês da Ana fecha com sobra de R$&nbsp;160; R$&nbsp;1.800 − R$&nbsp;1.950 = −R$&nbsp;150.</p>
+        </div>
+      </details>
+    </section>
+
+  </main>
+</div>
+
+<footer class="rodape">
+  <div>Seu salário, seu mês — roteiro de apresentação. Todos os valores em reais são exemplos fictícios.</div>
+</footer>
+
+<script>
+  (function () {
+    // Mostrar só as falas
+    var btnFalas = document.getElementById('btn-falas');
+    btnFalas.addEventListener('click', function () {
+      var ativo = document.body.classList.toggle('so-falas');
+      btnFalas.setAttribute('aria-pressed', ativo ? 'true' : 'false');
+    });
+
+    // Imprimir: abre tudo que estiver recolhido e restaura depois
+    var fechados = [];
+    window.addEventListener('beforeprint', function () {
+      fechados = Array.prototype.filter.call(document.querySelectorAll('details'), function (d) { return !d.open; });
+      fechados.forEach(function (d) { d.open = true; });
+    });
+    window.addEventListener('afterprint', function () {
+      fechados.forEach(function (d) { d.open = false; });
+      fechados = [];
+    });
+    document.getElementById('btn-imprimir').addEventListener('click', function () { window.print(); });
+
+    // Sumário recolhido em telas pequenas
+    var tocWrap = document.querySelector('.toc-wrap');
+    if (window.matchMedia('(max-width: 960px)').matches) tocWrap.open = false;
+    tocWrap.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        if (window.matchMedia('(max-width: 960px)').matches) tocWrap.open = false;
+      });
+    });
+
+    // Destaca no sumário a seção que está na tela
+    if ('IntersectionObserver' in window) {
+      var links = {};
+      document.querySelectorAll('.toc a').forEach(function (a) { links[a.getAttribute('href').slice(1)] = a; });
+      var alvos = Object.keys(links).map(function (id) { return document.getElementById(id); }).filter(Boolean);
+      var atual = null;
+      var obs = new IntersectionObserver(function (entradas) {
+        entradas.forEach(function (e) {
+          if (e.isIntersecting) {
+            if (atual) atual.classList.remove('ativo');
+            atual = links[e.target.id];
+            if (atual) atual.classList.add('ativo');
+          }
+        });
+      }, { rootMargin: '0px 0px -75% 0px' });
+      alvos.forEach(function (el) { obs.observe(el); });
+    }
+  })();
+</script>
+</body>
+</html>
