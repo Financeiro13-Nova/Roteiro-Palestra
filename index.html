@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Seu salário, seu mês — roteiro de apresentação</title>
-<meta name="description" content="Roteiro da palestra “Seu salário, seu mês — saúde financeira no dia a dia”: estrutura, slides, notas de fala e exercício prático.">
+<meta name="description" content="Roteiro da palestra “Seu salário, seu mês — saúde financeira no dia a dia”: estrutura, slides e notas de fala.">
 <meta name="theme-color" content="#1f6f4a">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231f6f4a'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='700' fill='white' text-anchor='middle'%3ER$%3C/text%3E%3C/svg%3E">
 <style>
@@ -23,9 +23,6 @@
     --warn-bg: #fff6e2;
     --warn-line: #e3b75a;
     --warn-ink: #5e4508;
-    --b-ess-bg: #e4f1ea; --b-ess-ink: #1b5e3f;
-    --b-com-bg: #fcefd6; --b-com-ink: #7a4f00;
-    --b-aju-bg: #e3ecfa; --b-aju-ink: #1d4a86;
     --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
     --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     --radius: 14px;
@@ -46,9 +43,6 @@
       --warn-bg: #2a2412;
       --warn-line: #8a6b22;
       --warn-ink: #f0d58f;
-      --b-ess-bg: #1d3127; --b-ess-ink: #8fe0b5;
-      --b-com-bg: #33280f; --b-com-ink: #f2c66d;
-      --b-aju-bg: #172a45; --b-aju-ink: #9cc1f5;
     }
   }
 
@@ -88,6 +82,7 @@
   .chips li b { color: var(--ink); }
   .tools { display: flex; flex-wrap: wrap; gap: .6rem; }
   .btn {
+    display: inline-block; text-decoration: none;
     font: inherit; font-size: .92rem; font-weight: 600; cursor: pointer;
     border-radius: 10px; padding: .55rem 1rem; border: 1px solid var(--line);
     background: var(--surface); color: var(--ink);
@@ -215,33 +210,6 @@
 
   body.so-falas .tela, body.so-falas .nota { display: none; }
 
-  /* ---------- Exercício ---------- */
-  .badge { display: inline-block; font-size: .78rem; font-weight: 700; padding: .12rem .55rem; border-radius: 999px; white-space: nowrap; }
-  .b-ess { background: var(--b-ess-bg); color: var(--b-ess-ink); }
-  .b-com { background: var(--b-com-bg); color: var(--b-com-ink); }
-  .b-aju { background: var(--b-aju-bg); color: var(--b-aju-ink); }
-
-  .entrada { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.2rem; margin-bottom: 1.2rem; }
-  .conta {
-    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
-    padding: 1rem 1.2rem; margin: 0 0 1.6rem; max-width: 420px; font-variant-numeric: tabular-nums;
-  }
-  .conta h4 { margin: 0 0 .6rem; font-size: 1.05rem; }
-  .conta dl { margin: 0; display: grid; grid-template-columns: 1fr auto; gap: .3rem 1rem; }
-  .conta dt { color: var(--muted); }
-  .conta dd { margin: 0; text-align: right; }
-  .conta .sobra { border-top: 2px solid var(--ink); padding-top: .45rem; margin-top: .25rem; font-weight: 700; color: var(--ink); }
-  .conta .sobra + dd { border-top: 2px solid var(--ink); padding-top: .45rem; margin-top: .25rem; font-weight: 700; color: var(--accent); }
-
-  ol.passos { padding-left: 0; list-style: none; counter-reset: p; margin: 0 0 1.6rem; }
-  ol.passos li { counter-increment: p; position: relative; padding: 0 0 .9rem 2.6rem; }
-  ol.passos li::before {
-    content: counter(p); position: absolute; left: 0; top: .05rem;
-    width: 1.8rem; height: 1.8rem; border-radius: 50%; display: grid; place-items: center;
-    background: var(--accent-soft); color: var(--accent); font-weight: 700; font-size: .9rem;
-  }
-  .modelo td { height: 2.6rem; }
-
   /* ---------- Resumo ---------- */
   .mensagens { list-style: none; padding: 0; margin: 0; display: grid; gap: 1rem; counter-reset: m; }
   .mensagens li {
@@ -310,7 +278,7 @@
     main { max-width: none; }
     .tela b { color: #000; }
     .ideia { background: #fff; color: #000; border: 2px solid #000; }
-    .slide, .card, .mensagens li, .conta, table, tr { break-inside: avoid; }
+    .slide, .card, .mensagens li, table, tr { break-inside: avoid; }
     section > h2, h3 { break-after: avoid; }
     a { color: inherit; text-decoration: none; }
   }
@@ -326,12 +294,12 @@
     <ul class="chips">
       <li><b>60 min</b> de palestra</li>
       <li><b>22</b> slides</li>
-      <li>versão enxuta de <b>30 min</b></li>
       <li>valores em reais são <b>fictícios</b></li>
     </ul>
     <div class="tools">
       <button class="btn" id="btn-falas" type="button" aria-pressed="false">Mostrar só as falas</button>
       <button class="btn" id="btn-imprimir" type="button">Imprimir ou salvar em PDF</button>
+      <a class="btn" href="exercicio.html">Exercício prático ↗</a>
     </div>
   </div>
 </header>
@@ -344,9 +312,7 @@
       <p>Sumário</p>
       <ol>
         <li><a href="#visao-geral">Título, objetivo e duração</a></li>
-        <li><a href="#roteiro">Roteiro</a>
-          <ol><li><a href="#versao-30">Versão de 30 minutos</a></li></ol>
-        </li>
+        <li><a href="#roteiro">Roteiro</a></li>
         <li><a href="#slides">Slides e notas de fala</a>
           <ol>
             <li><a href="#bloco-abertura">Abertura</a></li>
@@ -358,7 +324,7 @@
             <li><a href="#bloco-encerramento">Encerramento</a></li>
           </ol>
         </li>
-        <li><a href="#exercicio">Exercício: o mês da Ana</a></li>
+        <li><a href="exercicio.html">Exercício: o mês da Ana ↗</a></li>
         <li><a href="#resumo">Resumo: três mensagens</a></li>
         <li><a href="#preparacao">Notas de preparação</a></li>
       </ol>
@@ -373,7 +339,7 @@
       <dl class="ficha">
         <div><dt>Título</dt><dd>Seu salário, seu mês — um jeito simples de organizar o dinheiro do dia a dia</dd></div>
         <div><dt>Objetivo em uma frase</dt><dd>Ajudar cada pessoa a enxergar quanto realmente recebe, para onde o dinheiro vai e quando as contas vencem, para planejar o mês dentro da sua própria realidade.</dd></div>
-        <div><dt>Duração</dt><dd>60 minutos, como indicam seus materiais. Ao final do roteiro há uma versão enxuta de 30 minutos, caso o tempo seja menor.</dd></div>
+        <div><dt>Duração</dt><dd>60 minutos, como indicam seus materiais.</dd></div>
       </dl>
       <blockquote class="ideia">
         <p>“Você não precisa ganhar muito para começar a cuidar do dinheiro. Precisa saber quanto entra, para onde vai e quando vence.”</p>
@@ -427,23 +393,6 @@
         <div class="card"><h4>Desenvolvimento</h4><p>Os blocos 2 a 6 usam a mesma pessoa fictícia, a Ana, do início ao fim. Assim, o público acompanha uma história, e não números soltos. A Bia, outra pessoa fictícia, aparece só no bloco 5 para mostrar quando a renda não cobre o básico.</p></div>
         <div class="card"><h4>Encerramento</h4><p>Não traga conteúdo novo. Retome as três ideias, proponha a atividade da semana e termine com a frase final.</p></div>
       </div>
-
-      <h3 id="versao-30">Versão de 30 minutos <span class="tempo">(sugestão)</span></h3>
-      <div class="tabela">
-        <table>
-          <thead><tr><th>Parte</th><th>Tempo</th><th>Slides</th></tr></thead>
-          <tbody>
-            <tr><td>Abertura</td><td class="nw">0–4 min</td><td>1–2</td></tr>
-            <tr><td>Dinheiro que entra</td><td class="nw">4–8 min</td><td>4</td></tr>
-            <tr><td>Gastos</td><td class="nw">8–14 min</td><td>6 e 8</td></tr>
-            <tr><td>Organizando o mês</td><td class="nw">14–21 min</td><td>10–11 (exercício só com a Ana)</td></tr>
-            <tr><td>Dívidas e parcelas</td><td class="nw">21–26 min</td><td>13, 14 e 16</td></tr>
-            <tr><td>Imprevistos</td><td class="nw">26–28 min</td><td>17</td></tr>
-            <tr><td>Encerramento</td><td class="nw">28–30 min</td><td>19–20</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="fora"><strong>Ficam de fora:</strong> os dados do Banco Central, o slide do holerite, os pequenos gastos repetidos, o calendário, o slide dos juros e os pequenos objetivos.</p>
     </section>
 
     <!-- ===================== SLIDES ===================== -->
@@ -512,9 +461,9 @@
 
       <article class="slide" id="slide-6">
         <div class="slide-head"><span class="slide-num">6</span><h4>Três tipos de gasto</h4></div>
-        <div class="tela"><span class="lbl">Na tela</span><p><b>Essenciais</b> · <b>Compromissos</b> · <b>Não Essenciais</b>.</p></div>
+        <div class="tela"><span class="lbl">Na tela</span><p><b>Essenciais</b> · <b>Compromissos</b> · <b>Ajustáveis</b>.</p></div>
         <div class="fala"><span class="lbl">Fala</span>
-          <p class="dito">Essenciais mantêm a vida funcionando: aluguel, mercado, luz, água, transporte, remédios. Compromissos são valores que você já prometeu pagar: parcelas, empréstimos, acordos. Não Essenciais são os gastos que dá para aumentar, diminuir ou adiar: delivery, lazer, roupas, assinaturas. Internet, por exemplo, pode ser essencial para quem trabalha ou estuda com ela. Cada pessoa decide o que é essencial na própria vida.</p>
+          <p class="dito">Essenciais mantêm a vida funcionando: aluguel, mercado, luz, água, transporte, remédios. Compromissos são valores que você já prometeu pagar: parcelas, empréstimos, acordos. Ajustáveis são os gastos que dá para aumentar, diminuir ou adiar: delivery, lazer, roupas, assinaturas. Internet, por exemplo, pode ser essencial para quem trabalha ou estuda com ela. Cada pessoa decide o que é essencial na própria vida.</p>
         </div>
       </article>
 
@@ -558,7 +507,7 @@
         <div class="slide-head"><span class="slide-num">11</span><h4>O mês da Ana</h4></div>
         <div class="tela"><span class="lbl">Na tela</span><p>A tabela do exercício prático, com os totais (exemplo fictício).</p></div>
         <div class="fala"><span class="lbl">Fala</span>
-          <p class="dir">Siga o roteiro do <a href="#exercicio">exercício prático</a>, mais abaixo. Mostre que, depois de tudo, sobram R$&nbsp;160 para a Ana. Pergunte:</p>
+          <p class="dir">Siga o roteiro do <a href="exercicio.html">exercício prático</a>, que está em uma página separada. Mostre que, depois de tudo, sobram R$&nbsp;160 para a Ana. Pergunte:</p>
           <p class="dito">O que a Ana poderia fazer com esses R$&nbsp;160?</p>
           <p class="dir">Aceite as respostas sem dizer que existe uma única resposta certa.</p>
         </div>
@@ -663,68 +612,6 @@
       </article>
     </section>
 
-    <!-- ===================== EXERCÍCIO ===================== -->
-    <section id="exercicio">
-      <h2>Exercício prático: o mês da Ana</h2>
-      <p>Depois de anotar tudo, sobram R$&nbsp;160 para a Ana no mês. Todos os valores e datas são <strong>fictícios</strong>.</p>
-
-      <div class="entrada"><strong>Entrada:</strong> salário líquido de R$&nbsp;2.500, que cai no dia 5 (bruto de R$&nbsp;2.800 menos R$&nbsp;300 de descontos).</div>
-
-      <div class="tabela resp">
-        <table>
-          <thead><tr><th>Gasto</th><th>Tipo</th><th class="num">Valor (R$)</th><th>Vence</th></tr></thead>
-          <tbody>
-            <tr><td data-label="Gasto">Aluguel</td><td data-label="Tipo"><span class="badge b-ess">Essencial</span></td><td data-label="Valor (R$)" class="num">850</td><td data-label="Vence">dia 10</td></tr>
-            <tr><td data-label="Gasto">Mercado</td><td data-label="Tipo"><span class="badge b-ess">Essencial</span></td><td data-label="Valor (R$)" class="num">550</td><td data-label="Vence">ao longo do mês</td></tr>
-            <tr><td data-label="Gasto">Luz, água e gás</td><td data-label="Tipo"><span class="badge b-ess">Essencial</span></td><td data-label="Valor (R$)" class="num">180</td><td data-label="Vence">dia 15</td></tr>
-            <tr><td data-label="Gasto">Internet e celular</td><td data-label="Tipo"><span class="badge b-ess">Essencial</span></td><td data-label="Valor (R$)" class="num">100</td><td data-label="Vence">dia 15</td></tr>
-            <tr><td data-label="Gasto">Remédios</td><td data-label="Tipo"><span class="badge b-ess">Essencial</span></td><td data-label="Valor (R$)" class="num">60</td><td data-label="Vence">ao longo do mês</td></tr>
-            <tr><td data-label="Gasto">Parcela do celular (4 de 10)</td><td data-label="Tipo"><span class="badge b-com">Compromisso</span></td><td data-label="Valor (R$)" class="num">150</td><td data-label="Vence">dia 20 (fatura do cartão)</td></tr>
-            <tr><td data-label="Gasto">Parcela da loja de roupas</td><td data-label="Tipo"><span class="badge b-com">Compromisso</span></td><td data-label="Valor (R$)" class="num">80</td><td data-label="Vence">dia 20 (fatura do cartão)</td></tr>
-            <tr><td data-label="Gasto">Delivery e lanches</td><td data-label="Tipo"><span class="badge b-aju">Ajustável</span></td><td data-label="Valor (R$)" class="num">160</td><td data-label="Vence">ao longo do mês</td></tr>
-            <tr><td data-label="Gasto">Duas assinaturas de streaming</td><td data-label="Tipo"><span class="badge b-aju">Ajustável</span></td><td data-label="Valor (R$)" class="num">60</td><td data-label="Vence">dia 20 (fatura do cartão)</td></tr>
-            <tr><td data-label="Gasto">Lazer</td><td data-label="Tipo"><span class="badge b-aju">Ajustável</span></td><td data-label="Valor (R$)" class="num">150</td><td data-label="Vence">ao longo do mês</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="conta">
-        <h4>Totais conferidos</h4>
-        <dl>
-          <dt>Salário líquido</dt><dd>R$&nbsp;2.500</dd>
-          <dt>− Essenciais</dt><dd>R$&nbsp;1.740</dd>
-          <dt>− Compromissos</dt><dd>R$&nbsp;230</dd>
-          <dt>− Ajustáveis</dt><dd>R$&nbsp;370</dd>
-          <dt>Total de gastos</dt><dd>R$&nbsp;2.340</dd>
-          <dt class="sobra">Sobra</dt><dd>R$&nbsp;160</dd>
-        </dl>
-      </div>
-
-      <h3>Como conduzir <span class="tempo">cerca de 10 minutos</span></h3>
-      <ol class="passos">
-        <li>Mostre só a entrada e pergunte: “Quanto vocês acham que sobra para a Ana?”</li>
-        <li>Revele os gastos aos poucos, por tipo, e some junto com o público.</li>
-        <li>Mostre o calendário: a fatura do dia 20 soma R$&nbsp;290 (R$&nbsp;150 + R$&nbsp;80 + R$&nbsp;60). Se a Ana separar esse valor no dia 5, a fatura não a pega de surpresa.</li>
-        <li>Pergunte: “Se a Ana quisesse que sobrasse um pouco mais, onde ela mexeria?” Mostre que a escolha é dela: pode reduzir o delivery, cancelar uma assinatura que não usa ou manter tudo como está.</li>
-        <li>Feche: “A Ana não ganhou nem um real a mais. Ela só passou a enxergar o mês dela.”</li>
-      </ol>
-
-      <h3>Modelo para o público preencher</h3>
-      <div class="tabela modelo">
-        <table>
-          <thead><tr><th>Entrada ou gasto</th><th>Tipo (essencial, compromisso ou ajustável)</th><th>Valor (R$)</th><th>Dia de vencimento</th></tr></thead>
-          <tbody>
-            <tr><td>Salário que cai na conta</td><td></td><td></td><td></td></tr>
-            <tr><td></td><td></td><td></td><td></td></tr>
-            <tr><td></td><td></td><td></td><td></td></tr>
-            <tr><td></td><td></td><td></td><td></td></tr>
-            <tr><td></td><td></td><td></td><td></td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p>No fim: <strong>total das entradas − total dos gastos = quanto sobra ou quanto falta.</strong> Avise que ninguém precisa mostrar o próprio papel.</p>
-    </section>
-
     <!-- ===================== RESUMO ===================== -->
     <section id="resumo">
       <h2>Resumo final: três mensagens</h2>
@@ -746,7 +633,7 @@
           <ul>
             <li>Os números do Banco Central (56%, 69%, 15,1 milhões e a taxa média de 63% ao ano em abril de 2026). Eles não foram verificados na fonte. Confira valor, ano e nome da pesquisa no site do BC antes de usar.</li>
             <li>Quem é o público: colegas da mesma empresa ou de fora, quantas pessoas, se terão papel e caneta.</li>
-            <li>Se a duração é mesmo 60 minutos ou se a versão de 30 minutos serve melhor.</li>
+            <li>Se a duração é mesmo de 60 minutos.</li>
             <li>Como você quer se apresentar no início. O roteiro não traz nada sobre você além de ser analista financeiro da área de comissionamento.</li>
             <li>Se haverá material impresso (como o modelo do exercício) para entregar ao público.</li>
           </ul>
