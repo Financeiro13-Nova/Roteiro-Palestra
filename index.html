@@ -282,9 +282,190 @@
     section > h2, h3 { break-after: avoid; }
     a { color: inherit; text-decoration: none; }
   }
+
+  /* ================= Anotações: marca-texto e comentários ================= */
+  .dica { margin: .9rem 0 0; font-size: .88rem; color: var(--muted); }
+  .dica b { color: var(--ink); }
+
+  mark.anot {
+    color: #1b1b1b; border-radius: 3px; padding: 0 .06em; cursor: pointer;
+    -webkit-box-decoration-break: clone; box-decoration-break: clone;
+  }
+  mark.anot * { color: inherit !important; }
+  .anot-amarelo { background: #fde68a; }
+  .anot-verde { background: #b7efc9; }
+  .anot-rosa { background: #f9c9e0; }
+  @media (prefers-color-scheme: dark) {
+    .anot-amarelo { background: #ecd36f; }
+    .anot-verde { background: #93dcae; }
+    .anot-rosa { background: #f0aecd; }
+  }
+  mark.anot-com-nota { border-bottom: 2px solid rgba(0, 0, 0, .4); }
+  @keyframes anot-pulso {
+    0% { box-shadow: 0 0 0 0 rgba(31, 111, 74, .65); }
+    100% { box-shadow: 0 0 0 12px rgba(31, 111, 74, 0); }
+  }
+  mark.anot.anot-flash { animation: anot-pulso .9s ease-out 3; }
+
+  .anot-badge {
+    display: inline-grid; place-items: center; width: 1.3rem; height: 1.3rem; margin: 0 .1rem 0 .15rem;
+    vertical-align: text-bottom; border-radius: 50%; border: 0; padding: 0; cursor: pointer;
+    background: var(--accent); color: var(--accent-ink);
+  }
+  .anot-badge svg { width: .78rem; height: .78rem; display: block; }
+  .anot-badge:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+  /* Barra que aparece ao selecionar texto */
+  .anot-toolbar {
+    position: fixed; z-index: 50; display: flex; align-items: center; gap: .35rem; padding: .4rem;
+    background: #1f2a24; color: #fff; border-radius: 12px; box-shadow: 0 8px 24px rgba(0, 0, 0, .28);
+  }
+  .anot-toolbar[hidden], .anot-pop[hidden], .anot-painel[hidden] { display: none; }
+  .anot-sw {
+    width: 1.65rem; height: 1.65rem; border-radius: 50%; cursor: pointer; padding: 0;
+    border: 2px solid rgba(255, 255, 255, .75);
+  }
+  .anot-sw:hover { transform: scale(1.08); }
+  .anot-sep { width: 1px; align-self: stretch; background: rgba(255, 255, 255, .25); margin: 0 .15rem; }
+  .anot-comentar {
+    display: flex; align-items: center; gap: .4rem; background: transparent; color: inherit; border: 0;
+    font: inherit; font-size: .88rem; font-weight: 600; padding: .3rem .6rem; border-radius: 8px; cursor: pointer;
+  }
+  .anot-comentar:hover { background: rgba(255, 255, 255, .14); }
+  .anot-comentar svg { width: 1rem; height: 1rem; }
+
+  /* Caixa de comentário */
+  .anot-pop {
+    position: absolute; z-index: 60; width: min(360px, calc(100vw - 1.5rem));
+    background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: 14px;
+    box-shadow: 0 14px 36px rgba(0, 0, 0, .2); padding: .9rem;
+  }
+  .anot-pop-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: .5rem; }
+  .anot-pop-head strong { font-size: .95rem; }
+  .anot-x {
+    border: 0; background: transparent; color: var(--muted); font-size: 1.4rem; line-height: 1;
+    cursor: pointer; padding: .1rem .35rem; border-radius: 8px;
+  }
+  .anot-x:hover { background: var(--bg); color: var(--ink); }
+  .anot-pop-trecho {
+    margin: 0 0 .7rem; padding: .45rem .7rem; border-left: 3px solid var(--line); color: var(--muted);
+    font-size: .88rem; font-style: italic; max-height: 4.8em; overflow: hidden;
+  }
+  .anot-pop-cores { display: flex; align-items: center; gap: .45rem; margin-bottom: .6rem; font-size: .82rem; color: var(--muted); }
+  .anot-pop-cores .anot-sw { border-color: var(--line); width: 1.45rem; height: 1.45rem; }
+  .anot-pop-cores .anot-sw[aria-pressed="true"] { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .anot-pop textarea {
+    width: 100%; min-height: 5.5rem; resize: vertical; font: inherit; font-size: .95rem; line-height: 1.5;
+    border: 1px solid var(--line); border-radius: 10px; padding: .6rem .7rem; background: var(--bg); color: var(--ink);
+  }
+  .anot-pop textarea:focus { outline: 2px solid var(--accent); outline-offset: 0; border-color: transparent; }
+  .anot-pop-acoes { display: flex; justify-content: space-between; gap: .5rem; margin-top: .7rem; }
+  .anot-bt {
+    font: inherit; font-size: .88rem; font-weight: 600; cursor: pointer; border-radius: 9px; padding: .45rem .85rem;
+    border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+  }
+  .anot-bt:hover { border-color: var(--accent); }
+  .anot-bt-pri { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  .anot-bt-perigo { color: #b42318; }
+  @media (prefers-color-scheme: dark) { .anot-bt-perigo { color: #ff8a80; } }
+  .anot-bt-perigo.anot-confirmar { background: #b42318; border-color: #b42318; color: #fff; }
+
+  /* Botão flutuante e painel */
+  .anot-fab {
+    position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 40; display: flex; align-items: center; gap: .45rem;
+    padding: .65rem 1rem; border-radius: 999px; border: 0; background: var(--accent); color: var(--accent-ink);
+    font: inherit; font-size: .92rem; font-weight: 650; box-shadow: 0 6px 18px rgba(0, 0, 0, .22); cursor: pointer;
+  }
+  .anot-fab svg { width: 1.05rem; height: 1.05rem; }
+  .anot-cont { background: rgba(255, 255, 255, .25); border-radius: 999px; padding: 0 .5rem; font-size: .8rem; min-width: 1.4rem; text-align: center; }
+  @media (prefers-color-scheme: dark) { .anot-cont { background: rgba(0, 0, 0, .2); } }
+
+  .anot-painel {
+    position: fixed; z-index: 70; top: 0; right: 0; bottom: 0; width: min(390px, 100vw);
+    background: var(--surface); color: var(--ink); border-left: 1px solid var(--line);
+    box-shadow: -12px 0 36px rgba(0, 0, 0, .16); display: flex; flex-direction: column;
+  }
+  .anot-painel-head { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.1rem; border-bottom: 1px solid var(--line); }
+  .anot-painel-head h2 { margin: 0; font-size: 1.3rem; border: 0; padding: 0; }
+  .anot-corpo { flex: 1; overflow: auto; padding: .8rem; }
+  .anot-vazio { color: var(--muted); font-size: .92rem; padding: .4rem .3rem; }
+  .anot-vazio b { color: var(--ink); }
+  .anot-lista { list-style: none; margin: 0; padding: 0; display: grid; gap: .55rem; }
+  .anot-item {
+    display: block; width: 100%; text-align: left; font: inherit; color: inherit; cursor: pointer;
+    background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: .65rem .8rem .7rem;
+    position: relative; overflow: hidden;
+  }
+  .anot-item:hover { border-color: var(--accent); }
+  .anot-item::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: var(--cor, #fde68a); }
+  .anot-item-ctx { display: block; font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-bottom: .2rem; }
+  .anot-item-trecho { display: block; font-size: .9rem; font-style: italic; }
+  .anot-item-nota { display: block; margin-top: .4rem; font-size: .9rem; padding-top: .4rem; border-top: 1px dashed var(--line); white-space: pre-wrap; }
+  .anot-orfa { opacity: .85; cursor: default; }
+  .anot-orfa .anot-item-ctx { color: #b42318; }
+  .anot-orfa .anot-bt { margin-top: .5rem; }
+  .anot-painel-pe { border-top: 1px solid var(--line); padding: .9rem 1.1rem 1.1rem; }
+  .anot-painel-pe p { font-size: .82rem; color: var(--muted); margin: 0 0 .7rem; }
+  .anot-botoes { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .anot-botoes label.anot-bt { display: inline-block; }
+  .anot-status { font-size: .85rem; color: var(--accent); margin: .6rem 0 0; min-height: 1.2em; }
+  .anot-aviso-erro { color: #b42318 !important; font-weight: 600; }
+
+  @media (max-width: 640px) {
+    .anot-toolbar { left: 50% !important; top: auto !important; bottom: 1rem; transform: translateX(-50%); }
+    body.anot-selecionando .anot-fab { display: none; }
+    .anot-pop { position: fixed; left: .75rem !important; right: .75rem; top: auto !important; bottom: .75rem; width: auto; }
+    .anot-fab { right: .9rem; bottom: .9rem; }
+  }
+
+  @media print {
+    .anot-toolbar, .anot-pop, .anot-fab, .anot-painel, .dica { display: none !important; }
+    mark.anot { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .anot-badge { display: inline; width: auto; height: auto; background: none; color: #222; margin: 0; }
+    .anot-badge svg { display: none; }
+    .anot-badge::after { content: " [Nota: " attr(data-nota) "]"; font-style: italic; font-size: .88em; }
+  }
+
+  /* Modo leitura e conexão com o GitHub */
+  .anot-tb-editar { display: flex; align-items: center; gap: .35rem; }
+  .anot-toolbar .anot-tb-conectar { display: none; }
+  .anot-toolbar.leitura .anot-tb-editar { display: none; }
+  .anot-toolbar.leitura .anot-tb-conectar { display: flex; }
+  .anot-pop-leitura { display: none; margin: 0; font-size: .95rem; white-space: pre-wrap; }
+  .anot-pop.leitura .anot-pop-cores, .anot-pop.leitura textarea, .anot-pop.leitura .anot-pop-acoes { display: none; }
+  .anot-pop.leitura .anot-pop-leitura { display: block; }
+  .anot-painel.leitura [data-acao="apagar"] { display: none; }
+
+  .anot-sync { display: flex; align-items: center; gap: .55rem; padding: .6rem 1.1rem; font-size: .85rem; color: var(--muted); border-bottom: 1px solid var(--line); }
+  .anot-dot { flex: none; width: .6rem; height: .6rem; border-radius: 50%; background: #9aa3a0; }
+  .anot-sync[data-estado="ok"] .anot-dot { background: #22a35a; }
+  .anot-sync[data-estado="salvando"] .anot-dot, .anot-sync[data-estado="pendente"] .anot-dot, .anot-sync[data-estado="carregando"] .anot-dot { background: #e0a100; }
+  .anot-sync[data-estado="erro"] .anot-dot { background: #d92d20; }
+  .anot-sync[data-estado="erro"] .anot-sync-texto { color: #b42318; }
+  @media (prefers-color-scheme: dark) { .anot-sync[data-estado="erro"] .anot-sync-texto { color: #ff8a80; } }
+  .anot-sync .anot-bt { margin-left: auto; }
+  .anot-bt-mini { font-size: .8rem; padding: .3rem .6rem; }
+  .anot-fab.erro { box-shadow: 0 0 0 3px #d92d20, 0 6px 18px rgba(0, 0, 0, .22); }
+
+  .anot-painel-pe { max-height: 62vh; overflow: auto; }
+  .anot-gh { border: 1px solid var(--line); border-radius: 12px; margin-bottom: .8rem; background: var(--bg); }
+  .anot-gh > summary { cursor: pointer; padding: .6rem .8rem; font-weight: 650; font-size: .9rem; }
+  .anot-gh-form { padding: 0 .8rem .8rem; font-size: .88rem; }
+  .anot-gh-form p { margin: 0 0 .6rem; color: var(--muted); font-size: .84rem; }
+  .anot-gh-form ol { margin: 0 0 .8rem; padding-left: 1.2rem; color: var(--muted); font-size: .84rem; }
+  .anot-gh-form ol li { margin-bottom: .25rem; }
+  .anot-gh-form label { display: block; font-size: .78rem; font-weight: 700; color: var(--muted); margin-bottom: .5rem; }
+  .anot-gh-form input {
+    display: block; width: 100%; margin-top: .2rem; font: inherit; font-size: .9rem; font-weight: 400;
+    padding: .45rem .6rem; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink);
+  }
+  .anot-gh-form input:focus { outline: 2px solid var(--accent); border-color: transparent; }
+  .anot-2col { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
+  .anot-gh-msg { min-height: 1.2em; font-weight: 600; color: var(--accent) !important; }
+  .anot-gh-msg.erro { color: #b42318 !important; }
 </style>
 </head>
-<body>
+<body data-anot-doc="roteiro">
 
 <header class="hero">
   <div class="hero-inner">
@@ -301,6 +482,7 @@
       <button class="btn" id="btn-imprimir" type="button">Imprimir ou salvar em PDF</button>
       <a class="btn" href="exercicio.html">Exercício prático ↗</a>
     </div>
+    <p class="dica">Dica: selecione qualquer trecho para <b>marcar</b> ou <b>comentar</b>. As anotações ficam salvas no repositório do GitHub e aparecem em qualquer computador que abrir o link.</p>
   </div>
 </header>
 
@@ -730,6 +912,650 @@
       alvos.forEach(function (el) { obs.observe(el); });
     }
   })();
+</script>
+
+<!-- ===================== ANOTAÇÕES (marca-texto e comentários) ===================== -->
+<button class="anot-fab" type="button" data-anot-ui aria-controls="anot-painel" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg><span>Anotações</span><span class="anot-cont">0</span></button>
+
+<div class="anot-toolbar" data-anot-ui role="toolbar" aria-label="Marcar ou comentar o trecho selecionado" hidden>
+  <div class="anot-tb-editar">
+    <button type="button" class="anot-sw anot-amarelo" data-cor="amarelo" aria-label="Marcar em amarelo" title="Marcar em amarelo"></button>
+    <button type="button" class="anot-sw anot-verde" data-cor="verde" aria-label="Marcar em verde" title="Marcar em verde"></button>
+    <button type="button" class="anot-sw anot-rosa" data-cor="rosa" aria-label="Marcar em rosa" title="Marcar em rosa"></button>
+    <span class="anot-sep" aria-hidden="true"></span>
+    <button type="button" class="anot-comentar" data-acao="comentar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Comentar</button>
+  </div>
+  <button type="button" class="anot-comentar anot-tb-conectar" data-acao="conectar">Conectar ao GitHub para anotar</button>
+</div>
+
+<div class="anot-pop" data-anot-ui role="dialog" aria-label="Comentário da marcação" hidden>
+  <div class="anot-pop-head"><strong>Comentário</strong><button type="button" class="anot-x" data-acao="fechar-pop" aria-label="Fechar">×</button></div>
+  <blockquote class="anot-pop-trecho"></blockquote>
+  <div class="anot-pop-cores"><span>Cor:</span>
+    <button type="button" class="anot-sw anot-amarelo" data-cor="amarelo" aria-label="Amarelo" aria-pressed="false"></button>
+    <button type="button" class="anot-sw anot-verde" data-cor="verde" aria-label="Verde" aria-pressed="false"></button>
+    <button type="button" class="anot-sw anot-rosa" data-cor="rosa" aria-label="Rosa" aria-pressed="false"></button>
+  </div>
+  <textarea rows="4" placeholder="Escreva seu comentário (opcional)" aria-label="Comentário"></textarea>
+  <p class="anot-pop-leitura"></p>
+  <div class="anot-pop-acoes">
+    <button type="button" class="anot-bt anot-bt-perigo" data-acao="remover">Remover marcação</button>
+    <button type="button" class="anot-bt anot-bt-pri" data-acao="salvar">Salvar</button>
+  </div>
+</div>
+
+<aside id="anot-painel" class="anot-painel" data-anot-ui aria-label="Anotações" hidden>
+  <div class="anot-painel-head"><h2>Anotações</h2><button type="button" class="anot-x" data-acao="fechar-painel" aria-label="Fechar">×</button></div>
+  <div class="anot-sync" data-estado="carregando" role="status"><span class="anot-dot" aria-hidden="true"></span><span class="anot-sync-texto">Carregando…</span><button type="button" class="anot-bt anot-bt-mini" data-acao="tentar" hidden>Tentar de novo</button></div>
+  <div class="anot-corpo">
+    <p class="anot-vazio"></p>
+    <ol class="anot-lista"></ol>
+  </div>
+  <div class="anot-painel-pe">
+    <details class="anot-gh">
+      <summary>Conexão com o GitHub</summary>
+      <form class="anot-gh-form" autocomplete="off">
+        <p>Quem abre o link vê as anotações sem precisar de nada. Para <b>criar e editar</b>, cada computador precisa ser conectado uma vez com um token do GitHub:</p>
+        <ol>
+          <li>Abra <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">github.com/settings/personal-access-tokens/new</a>.</li>
+          <li>Em <b>Repository access</b>, escolha <b>Only select repositories</b> e marque o repositório da palestra.</li>
+          <li>Em <b>Permissions → Repository permissions → Contents</b>, escolha <b>Read and write</b>.</li>
+          <li>Clique em <b>Generate token</b>, copie e cole abaixo.</li>
+        </ol>
+        <label>Usuário ou organização do GitHub<input name="owner" spellcheck="false"></label>
+        <label>Repositório<input name="repo" spellcheck="false"></label>
+        <div class="anot-2col">
+          <label>Branch<input name="branch" spellcheck="false"></label>
+          <label>Pasta (opcional)<input name="pasta" spellcheck="false" placeholder="raiz"></label>
+        </div>
+        <label>Token<input name="token" type="password" spellcheck="false" placeholder="github_pat_…"></label>
+        <div class="anot-botoes">
+          <button type="submit" class="anot-bt anot-bt-pri">Conectar</button>
+          <button type="button" class="anot-bt" data-acao="desconectar">Desconectar este computador</button>
+        </div>
+        <p class="anot-gh-msg" role="status"></p>
+        <p>O token fica guardado só neste navegador. Use um token liberado apenas para este repositório.</p>
+      </form>
+    </details>
+    <div class="anot-botoes">
+      <button type="button" class="anot-bt" data-acao="baixar">Baixar cópia (.json)</button>
+      <button type="button" class="anot-bt anot-bt-perigo" data-acao="apagar">Apagar tudo</button>
+    </div>
+  </div>
+</aside>
+
+<script>
+/* Anotações: marca-texto e comentários salvos no repositório do GitHub.
+   Leitura: qualquer pessoa que abre o link (API pública do GitHub ou o próprio arquivo publicado).
+   Escrita: navegadores conectados com um token que tenha permissão "Contents: Read and write". */
+(function () {
+  'use strict';
+  var DOC = document.body.getAttribute('data-anot-doc') || 'roteiro';
+  var ARQ = 'anotacoes-' + DOC + '.json';
+  var K_CACHE = 'ssm-anot:' + DOC + ':cache';
+  var K_GH = 'ssm-anot:github';
+  var CORES = { amarelo: '#fde68a', verde: '#b7efc9', rosa: '#f9c9e0' };
+  var ICONE_NOTA = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>';
+
+  var root = document.querySelector('main');
+  if (!root) return;
+  var $ = function (s, el) { return (el || document).querySelector(s); };
+  var fab = $('.anot-fab'), cont = $('.anot-cont'), tb = $('.anot-toolbar'), pop = $('.anot-pop'), painel = $('#anot-painel');
+  var popTrecho = $('.anot-pop-trecho', pop), popTa = $('textarea', pop), popLeitura = $('.anot-pop-leitura', pop);
+  var listaEl = $('.anot-lista', painel), vazio = $('.anot-vazio', painel), sync = $('.anot-sync', painel);
+  var syncTxt = $('.anot-sync-texto', painel), btTentar = $('[data-acao="tentar"]', painel);
+  var ghDet = $('.anot-gh', painel), ghForm = $('.anot-gh-form', painel), ghMsg = $('.anot-gh-msg', painel);
+
+  // ---------------- armazenamento local (cache e configuração) ----------------
+  function ls(k, v) {
+    try {
+      if (v === undefined) return localStorage.getItem(k);
+      if (v === null) localStorage.removeItem(k); else localStorage.setItem(k, v);
+    } catch (e) { return null; }
+  }
+  function lerJson(k) { try { return JSON.parse(ls(k) || 'null'); } catch (e) { return null; } }
+
+  function detectar() {
+    var m = location.hostname.match(/^([^.]+)\.github\.io$/i);
+    var partes = location.pathname.split('/').filter(Boolean);
+    if (partes.length && /\.html?$/i.test(partes[partes.length - 1])) partes.pop();
+    if (!m) return { owner: '', repo: '', branch: 'main', pasta: '' };
+    if (!partes.length) return { owner: m[1], repo: m[1] + '.github.io', branch: 'main', pasta: '' };
+    return { owner: m[1], repo: partes[0], branch: 'main', pasta: partes.slice(1).join('/') };
+  }
+  var det = detectar(), salvo = lerJson(K_GH) || {};
+  var cfg = {
+    owner: salvo.owner || det.owner,
+    repo: salvo.repo || det.repo,
+    branch: salvo.branch || det.branch || 'main',
+    pasta: typeof salvo.pasta === 'string' ? salvo.pasta : det.pasta,
+    token: salvo.token || ''
+  };
+  function guardarCfg() { ls(K_GH, JSON.stringify(cfg)); }
+  function podeEditar() { return !!cfg.token; }
+
+  // ---------------- estado ----------------
+  var lista = [], sha = null, sujo = false, orfas = [], popId = null, estado = 'carregando', msgErro = '';
+  var cache = lerJson(K_CACHE);
+  if (cache && Array.isArray(cache.lista)) { lista = cache.lista; sha = cache.sha || null; sujo = !!cache.sujo; }
+  function guardarCache() { ls(K_CACHE, JSON.stringify({ lista: limpo(lista), sha: sha, sujo: sujo })); }
+  function visiveis() { return lista.filter(function (a) { return !a.apagado; }); }
+  function achar(id) { for (var i = 0; i < lista.length; i++) if (lista[i].id === id) return lista[i]; return null; }
+  function agora() { return new Date().toISOString(); }
+  function novoId() { return 'a' + Date.now().toString(36) + Math.random().toString(36).slice(2, 7); }
+  function limpo(l) {
+    return l.map(function (a) {
+      if (a.apagado) return { id: a.id, apagado: true, atualizado: a.atualizado };
+      return { id: a.id, exact: a.exact, prefix: a.prefix, suffix: a.suffix, pos: a.pos, color: a.color, note: a.note || '', criado: a.criado, atualizado: a.atualizado };
+    });
+  }
+  function mesclar(a, b) {
+    var m = {};
+    a.concat(b).forEach(function (x) {
+      if (!x || typeof x.id !== 'string') return;
+      var y = m[x.id];
+      if (!y || (x.atualizado || '') > (y.atualizado || '')) m[x.id] = x;
+    });
+    return Object.keys(m).map(function (k) { return m[k]; });
+  }
+  function extrair(j) {
+    var l = Array.isArray(j) ? j : (j && Array.isArray(j.anotacoes) ? j.anotacoes : []);
+    return l.filter(function (a) { return a && typeof a.id === 'string' && (a.apagado || typeof a.exact === 'string'); });
+  }
+
+  // ---------------- GitHub ----------------
+  function caminho() { var p = (cfg.pasta || '').replace(/^\/+|\/+$/g, ''); return (p ? p + '/' : '') + ARQ; }
+  function urlArquivo(comRef) {
+    return '/repos/' + encodeURIComponent(cfg.owner) + '/' + encodeURIComponent(cfg.repo) + '/contents/' +
+      caminho().split('/').map(encodeURIComponent).join('/') + (comRef ? '?ref=' + encodeURIComponent(cfg.branch) : '');
+  }
+  function api(metodo, url, corpo, token) {
+    var tk = token === undefined ? cfg.token : token;
+    var h = { 'Accept': 'application/vnd.github+json' };
+    if (tk) h.Authorization = 'Bearer ' + tk;
+    if (corpo) h['Content-Type'] = 'application/json';
+    return fetch('https://api.github.com' + url, { method: metodo, headers: h, body: corpo ? JSON.stringify(corpo) : undefined, cache: 'no-store' });
+  }
+  function paraB64(str) {
+    var b = new TextEncoder().encode(str), s = '';
+    for (var i = 0; i < b.length; i += 0x8000) s += String.fromCharCode.apply(null, b.subarray(i, i + 0x8000));
+    return btoa(s);
+  }
+  function deB64(b64) {
+    var s = atob(String(b64).replace(/\s/g, '')), b = new Uint8Array(s.length);
+    for (var i = 0; i < s.length; i++) b[i] = s.charCodeAt(i);
+    return new TextDecoder().decode(b);
+  }
+  // Lê pela API (imediato). Devolve {itens, sha}; null se não deu para ler.
+  function lerApi() {
+    if (!cfg.owner || !cfg.repo) return Promise.resolve(null);
+    return api('GET', urlArquivo(true)).then(function (r) {
+      if (r.status === 404) return cfg.token ? { itens: [], sha: null } : null;
+      if (!r.ok) return null;
+      return r.json().then(function (j) { return { itens: extrair(JSON.parse(deB64(j.content))), sha: j.sha }; });
+    }).catch(function () { return null; });
+  }
+  // Plano B: o arquivo publicado junto com a página (atualiza alguns minutos depois de salvar).
+  function lerPublicado() {
+    return fetch(ARQ + '?v=' + Date.now(), { cache: 'no-store' }).then(function (r) {
+      if (r.status === 404) return { itens: [], sha: null };
+      if (!r.ok) return null;
+      return r.json().then(function (j) { return { itens: extrair(j), sha: null }; });
+    }).catch(function () { return null; });
+  }
+  function lerRemoto() { return lerApi().then(function (r) { return r || lerPublicado(); }); }
+
+  var ultimaSync = 0;
+  function sincronizar() {
+    ultimaSync = Date.now();
+    if (!visiveis().length) setEstado('carregando');
+    return lerRemoto().then(function (rem) {
+      if (!rem) {
+        msgErro = (!cfg.owner || !cfg.repo)
+          ? 'Abra a página pelo link do GitHub Pages ou informe o repositório em “Conexão com o GitHub”.'
+          : 'Não foi possível ler as anotações do GitHub agora. Mostrando a última cópia deste navegador.';
+        setEstado('erro'); return;
+      }
+      if (rem.sha) sha = rem.sha;
+      lista = sujo ? mesclar(rem.itens, lista) : rem.itens;
+      guardarCache(); renderizar();
+      if (sujo && podeEditar()) salvarRemoto(); else setEstado(podeEditar() ? 'ok' : 'leitura');
+    });
+  }
+
+  var timerSalvar = null, salvando = false, deNovo = false;
+  function agendarSalvar() {
+    sujo = true; guardarCache(); setEstado('pendente');
+    clearTimeout(timerSalvar); timerSalvar = setTimeout(salvarRemoto, 1200);
+  }
+  function enviar(tentativa) {
+    var corpo = {
+      message: 'Anotações do roteiro (' + DOC + ')',
+      content: paraB64(JSON.stringify({ documento: DOC, versao: 1, anotacoes: limpo(lista) }, null, 2) + '\n'),
+      branch: cfg.branch
+    };
+    if (sha) corpo.sha = sha;
+    return api('PUT', urlArquivo(false), corpo).then(function (r) {
+      if (r.ok) return r.json().then(function (j) { sha = j && j.content ? j.content.sha : sha; });
+      if ((r.status === 409 || r.status === 422) && tentativa < 2) {
+        // Alguém salvou antes (outro computador): junta as duas versões e tenta de novo.
+        return lerApi().then(function (rem) {
+          if (rem) { sha = rem.sha; lista = mesclar(rem.itens, lista); renderizar(); } else { sha = null; }
+          return enviar(tentativa + 1);
+        });
+      }
+      if (r.status === 401) throw new Error('O token não foi aceito (pode ter expirado). Conecte de novo.');
+      if (r.status === 403) throw new Error('O token não tem permissão de escrita neste repositório.');
+      if (r.status === 404) throw new Error('Repositório ou branch não encontrado. Confira a conexão com o GitHub.');
+      throw new Error('O GitHub respondeu com erro ' + r.status + ' ao salvar.');
+    });
+  }
+  function salvarRemoto() {
+    clearTimeout(timerSalvar);
+    if (!podeEditar() || !sujo) return;
+    if (salvando) { deNovo = true; return; }
+    salvando = true; deNovo = false; setEstado('salvando');
+    enviar(0).then(function () {
+      if (!deNovo) sujo = false;
+      guardarCache(); setEstado(sujo ? 'pendente' : 'ok');
+    }).catch(function (e) {
+      msgErro = (e && e.message && !/fetch/i.test(e.message)) ? e.message : 'Sem conexão com o GitHub. As alterações ficam guardadas aqui até salvar.';
+      setEstado('erro');
+    }).then(function () {
+      salvando = false;
+      if (deNovo) { deNovo = false; salvarRemoto(); }
+    });
+  }
+
+  // ---------------- status ----------------
+  function setEstado(e) {
+    estado = e;
+    var t = {
+      carregando: 'Carregando anotações do GitHub…',
+      ok: 'Conectado ao GitHub · tudo salvo',
+      pendente: 'Alterações a salvar…',
+      salvando: 'Salvando no GitHub…',
+      leitura: 'Modo leitura: você vê as anotações, mas para criar ou editar conecte este computador ao GitHub.',
+      erro: msgErro
+    }[e] || '';
+    sync.setAttribute('data-estado', e);
+    syncTxt.textContent = t;
+    btTentar.hidden = e !== 'erro';
+    fab.classList.toggle('erro', e === 'erro');
+    var ro = !podeEditar();
+    painel.classList.toggle('leitura', ro);
+    tb.classList.toggle('leitura', ro);
+    atualizarVazio();
+  }
+
+  // ---------------- texto, posições e marcações ----------------
+  function ehUI(n) { var el = n.nodeType === 1 ? n : n.parentNode; return !!(el && el.closest && el.closest('[data-anot-ui]')); }
+  function textos() {
+    var w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) { return ehUI(n) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT; }
+    });
+    var nos = [], txt = '', n;
+    while ((n = w.nextNode())) { nos.push({ no: n, ini: txt.length }); txt += n.nodeValue; }
+    return { nos: nos, txt: txt };
+  }
+  function rangeParaPos(range) {
+    var t = textos(), s = -1, e = -1;
+    t.nos.forEach(function (it) {
+      var n = it.no;
+      if (!range.intersectsNode(n)) return;
+      var a = n === range.startContainer ? range.startOffset : 0;
+      var b = n === range.endContainer ? range.endOffset : n.nodeValue.length;
+      if (b <= a) return;
+      if (s < 0) s = it.ini + a;
+      e = it.ini + b;
+    });
+    if (s < 0) return null;
+    while (s < e && /\s/.test(t.txt[s])) s++;
+    while (e > s && /\s/.test(t.txt[e - 1])) e--;
+    return e > s ? { s: s, e: e, txt: t.txt } : null;
+  }
+  function norm(s) { return String(s || '').replace(/\s+/g, ' ').trim(); }
+  function comum(x, y, doFim) {
+    var k = 0;
+    if (doFim) while (k < x.length && k < y.length && x[x.length - 1 - k] === y[y.length - 1 - k]) k++;
+    else while (k < x.length && k < y.length && x[k] === y[k]) k++;
+    return k;
+  }
+  function localizar(a, txt) {
+    if (!a.exact) return null;
+    var melhor = null, i = txt.indexOf(a.exact);
+    while (i !== -1) {
+      var f = i + a.exact.length;
+      var nota = comum(norm(txt.slice(Math.max(0, i - 80), i)), norm(a.prefix), true) + comum(norm(txt.slice(f, f + 80)), norm(a.suffix), false);
+      var dist = Math.abs(i - (a.pos || 0));
+      if (!melhor || nota > melhor.nota || (nota === melhor.nota && dist < melhor.dist)) melhor = { s: i, e: f, nota: nota, dist: dist };
+      i = txt.indexOf(a.exact, i + 1);
+    }
+    return melhor;
+  }
+  function envolver(a, p, t) {
+    var segs = [];
+    t.nos.forEach(function (it) {
+      var len = it.no.nodeValue.length, ini = it.ini;
+      if (ini + len <= p.s || ini >= p.e) return;
+      var ls_ = Math.max(0, p.s - ini), le = Math.min(len, p.e - ini);
+      if (!/\S/.test(it.no.nodeValue.slice(ls_, le))) return;
+      segs.push({ no: it.no, ls: ls_, le: le });
+    });
+    var ultimo = null;
+    segs.forEach(function (sg) {
+      var alvo = sg.no;
+      if (sg.le < alvo.nodeValue.length) alvo.splitText(sg.le);
+      if (sg.ls > 0) alvo = alvo.splitText(sg.ls);
+      var m = document.createElement('mark');
+      m.className = 'anot anot-' + (CORES[a.color] ? a.color : 'amarelo') + (a.note ? ' anot-com-nota' : '');
+      m.setAttribute('data-anot-id', a.id);
+      if (a.note) m.title = a.note;
+      alvo.parentNode.insertBefore(m, alvo);
+      m.appendChild(alvo);
+      ultimo = m;
+    });
+    if (ultimo && a.note) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'anot-badge';
+      b.setAttribute('data-anot-ui', '');
+      b.setAttribute('data-anot-id', a.id);
+      b.setAttribute('data-nota', a.note);
+      b.setAttribute('aria-label', 'Ver comentário: ' + a.note);
+      b.title = a.note;
+      b.innerHTML = ICONE_NOTA;
+      ultimo.parentNode.insertBefore(b, ultimo.nextSibling);
+    }
+    return segs.length > 0;
+  }
+  function limparMarcas() {
+    root.querySelectorAll('.anot-badge').forEach(function (b) { b.remove(); });
+    root.querySelectorAll('mark.anot').forEach(function (m) {
+      var p = m.parentNode;
+      while (m.firstChild) p.insertBefore(m.firstChild, m);
+      p.removeChild(m);
+    });
+    root.normalize();
+  }
+  function renderizar() {
+    limparMarcas();
+    orfas = [];
+    visiveis().sort(function (x, y) { return (x.pos || 0) - (y.pos || 0); }).forEach(function (a) {
+      var t = textos(), p = localizar(a, t.txt);
+      if (p && envolver(a, p, t)) a.pos = p.s; else orfas.push(a.id);
+    });
+    atualizarPainel();
+  }
+
+  // ---------------- alterações ----------------
+  function criar(cor, comentar) {
+    if (!podeEditar()) return abrirPainel(true);
+    var sel = window.getSelection();
+    var r = (sel && sel.rangeCount && !sel.isCollapsed) ? sel.getRangeAt(0) : ultimoRange;
+    if (!r) return;
+    var p = rangeParaPos(r);
+    if (!p) return;
+    var a = {
+      id: novoId(), exact: p.txt.slice(p.s, p.e),
+      prefix: p.txt.slice(Math.max(0, p.s - 80), p.s), suffix: p.txt.slice(p.e, p.e + 80),
+      pos: p.s, color: cor, note: '', criado: agora(), atualizado: agora()
+    };
+    lista.push(a);
+    if (sel) sel.removeAllRanges();
+    esconderToolbar(true);
+    renderizar(); agendarSalvar();
+    if (comentar) abrirPop(a.id, true);
+  }
+  function atualizar(id, campos) {
+    var a = achar(id); if (!a || !podeEditar()) return;
+    Object.keys(campos).forEach(function (k) { a[k] = campos[k]; });
+    a.atualizado = agora();
+    renderizar(); agendarSalvar();
+  }
+  function remover(id) {
+    var a = achar(id); if (!a || !podeEditar()) return;
+    a.apagado = true; a.atualizado = agora();
+    renderizar(); agendarSalvar();
+  }
+
+  // ---------------- barra de seleção ----------------
+  var ultimoRange = null, timerEsconder = null, rafSel = 0;
+  function esconderToolbar(ja) {
+    clearTimeout(timerEsconder);
+    var f = function () { tb.hidden = true; document.body.classList.remove('anot-selecionando'); ultimoRange = null; };
+    if (ja) f(); else timerEsconder = setTimeout(f, 300);
+  }
+  function atualizarToolbar() {
+    var sel = window.getSelection();
+    if (!sel || !sel.rangeCount || sel.isCollapsed) return esconderToolbar();
+    var r = sel.getRangeAt(0), c = r.commonAncestorContainer;
+    if (!root.contains(c) || ehUI(c) || !/\S/.test(sel.toString())) return esconderToolbar();
+    clearTimeout(timerEsconder);
+    ultimoRange = r.cloneRange();
+    tb.hidden = false;
+    document.body.classList.add('anot-selecionando');
+    if (window.innerWidth <= 640) { tb.style.top = ''; tb.style.left = ''; tb.style.visibility = ''; return; }
+    var rect = r.getBoundingClientRect(), w = tb.offsetWidth, h = tb.offsetHeight;
+    var fora = rect.bottom < 0 || rect.top > window.innerHeight;
+    tb.style.visibility = fora ? 'hidden' : '';
+    var top = rect.top - h - 10;
+    if (top < 8) top = rect.bottom + 10;
+    top = Math.max(8, Math.min(top, window.innerHeight - h - 8));
+    var left = Math.max(8, Math.min(rect.left + rect.width / 2 - w / 2, window.innerWidth - w - 8));
+    tb.style.top = top + 'px'; tb.style.left = left + 'px';
+  }
+  document.addEventListener('selectionchange', function () {
+    cancelAnimationFrame(rafSel); rafSel = requestAnimationFrame(atualizarToolbar);
+  });
+  window.addEventListener('scroll', function () { if (!tb.hidden) atualizarToolbar(); }, { passive: true });
+  tb.addEventListener('mousedown', function (e) { e.preventDefault(); });
+  tb.addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    if (b.getAttribute('data-cor')) criar(b.getAttribute('data-cor'), false);
+    else if (b.getAttribute('data-acao') === 'comentar') criar('amarelo', true);
+    else if (b.getAttribute('data-acao') === 'conectar') { esconderToolbar(true); abrirPainel(true); }
+  });
+
+  // ---------------- caixa de comentário ----------------
+  function resumir(s, n) { s = norm(s); return s.length > n ? s.slice(0, n - 1) + '…' : s; }
+  function marcarCor(cor) {
+    pop.querySelectorAll('.anot-pop-cores .anot-sw').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-cor') === cor ? 'true' : 'false'); });
+  }
+  function posicionarPop(el) {
+    if (window.innerWidth <= 640) { pop.style.top = ''; pop.style.left = ''; return; }
+    var r = el.getBoundingClientRect(), w = pop.offsetWidth, h = pop.offsetHeight;
+    var top = r.bottom + 8;
+    if (top + h > window.innerHeight - 8 && r.top - h - 8 > 8) top = r.top - h - 8;
+    var left = Math.max(8, Math.min(r.left, window.innerWidth - w - 8));
+    pop.style.top = (top + window.scrollY) + 'px';
+    pop.style.left = (left + window.scrollX) + 'px';
+  }
+  function abrirPop(id, focar) {
+    var a = achar(id); if (!a || a.apagado) return;
+    var marcas = root.querySelectorAll('mark[data-anot-id="' + id + '"]'); if (!marcas.length) return;
+    if (popId && popId !== id) fecharPop(true);
+    popId = id;
+    var ed = podeEditar();
+    pop.classList.toggle('leitura', !ed);
+    popTrecho.textContent = '“' + resumir(a.exact, 180) + '”';
+    popTa.value = a.note || '';
+    popLeitura.textContent = a.note || 'Sem comentário.';
+    marcarCor(a.color);
+    pop.hidden = false;
+    posicionarPop(marcas[marcas.length - 1]);
+    if (focar && ed) popTa.focus();
+  }
+  function fecharPop(guardar) {
+    if (!popId) return;
+    var id = popId, a = achar(id);
+    pop.hidden = true; popId = null;
+    if (guardar !== false && a && podeEditar()) {
+      var v = popTa.value.trim();
+      if (v !== (a.note || '')) atualizar(id, { note: v });
+    }
+  }
+  pop.addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    var cor = b.getAttribute('data-cor'), acao = b.getAttribute('data-acao');
+    if (cor && popId) { marcarCor(cor); atualizar(popId, { color: cor }); }
+    else if (acao === 'salvar' || acao === 'fechar-pop') fecharPop(true);
+    else if (acao === 'remover' && popId) { var id = popId; pop.hidden = true; popId = null; remover(id); }
+  });
+  root.addEventListener('click', function (e) {
+    var m = e.target.closest('mark.anot, .anot-badge'); if (!m) return;
+    var sel = window.getSelection();
+    if (sel && !sel.isCollapsed && root.contains(sel.anchorNode)) return;
+    e.preventDefault();
+    abrirPop(m.getAttribute('data-anot-id'), false);
+  });
+  document.addEventListener('pointerdown', function (e) {
+    if (popId && !pop.contains(e.target) && !e.target.closest('mark.anot, .anot-badge')) fecharPop(true);
+  });
+
+  // ---------------- painel ----------------
+  function contexto(id) {
+    var m = root.querySelector('mark[data-anot-id="' + id + '"]'); if (!m) return '';
+    var s = m.closest('article.slide');
+    if (s) return 'Slide ' + norm($('.slide-num', s).textContent) + ' · ' + norm($('h4', s).textContent);
+    var sec = m.closest('section'), h = sec && $('h2', sec);
+    return h ? norm(h.textContent) : '';
+  }
+  function span(cls, txt) { var s = document.createElement('span'); s.className = cls; s.textContent = txt; return s; }
+  function atualizarVazio() {
+    vazio.textContent = '';
+    if (visiveis().length) { vazio.hidden = true; return; }
+    vazio.hidden = false;
+    vazio.innerHTML = podeEditar()
+      ? 'Nenhuma anotação ainda. <b>Selecione um trecho</b> do roteiro para marcar ou comentar.'
+      : 'Nenhuma anotação ainda. Para criar, conecte este computador ao GitHub (abaixo).';
+  }
+  function atualizarPainel() {
+    var vis = visiveis().slice().sort(function (x, y) { return (x.pos || 0) - (y.pos || 0); });
+    cont.textContent = vis.length;
+    listaEl.textContent = '';
+    vis.forEach(function (a) {
+      var li = document.createElement('li'), orfa = orfas.indexOf(a.id) !== -1;
+      var it = document.createElement(orfa ? 'div' : 'button');
+      it.className = 'anot-item' + (orfa ? ' anot-orfa' : '');
+      it.style.setProperty('--cor', CORES[a.color] || CORES.amarelo);
+      if (!orfa) { it.type = 'button'; it.addEventListener('click', function () { irPara(a.id); }); }
+      it.appendChild(span('anot-item-ctx', orfa ? 'Trecho não encontrado (o texto mudou)' : contexto(a.id)));
+      it.appendChild(span('anot-item-trecho', '“' + resumir(a.exact, 150) + '”'));
+      if (a.note) it.appendChild(span('anot-item-nota', a.note));
+      if (orfa && podeEditar()) {
+        var del = document.createElement('button');
+        del.type = 'button'; del.className = 'anot-bt anot-bt-perigo anot-bt-mini'; del.textContent = 'Excluir';
+        del.addEventListener('click', function () { remover(a.id); });
+        it.appendChild(del);
+      }
+      li.appendChild(it); listaEl.appendChild(li);
+    });
+    atualizarVazio();
+  }
+  function preencherForm() {
+    ['owner', 'repo', 'branch', 'pasta'].forEach(function (k) { ghForm.elements[k].value = cfg[k] || ''; });
+    ghForm.elements.token.value = '';
+    ghForm.elements.token.placeholder = cfg.token ? 'conectado (cole outro para trocar)' : 'github_pat_…';
+  }
+  function abrirPainel(config) {
+    painel.hidden = false; fab.setAttribute('aria-expanded', 'true');
+    preencherForm();
+    if (config) { ghDet.open = true; setTimeout(function () { ghForm.elements[cfg.owner ? (cfg.repo ? 'token' : 'repo') : 'owner'].focus(); }, 50); }
+    else $('.anot-x', painel).focus();
+  }
+  function fecharPainel() { painel.hidden = true; fab.setAttribute('aria-expanded', 'false'); }
+  fab.addEventListener('click', function () { if (painel.hidden) abrirPainel(!podeEditar() && !visiveis().length); else fecharPainel(); });
+
+  function irPara(id) {
+    var marcas = root.querySelectorAll('mark[data-anot-id="' + id + '"]'); if (!marcas.length) return;
+    var m = marcas[0], d = m.closest('details');
+    if (d) d.open = true;
+    if (document.body.classList.contains('so-falas') && m.closest('.tela, .nota')) {
+      var bf = document.getElementById('btn-falas'); if (bf) bf.click();
+    }
+    if (window.innerWidth <= 640) fecharPainel();
+    m.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    marcas.forEach(function (x) { x.classList.remove('anot-flash'); void x.offsetWidth; x.classList.add('anot-flash'); });
+    setTimeout(function () { marcas.forEach(function (x) { x.classList.remove('anot-flash'); }); }, 2800);
+  }
+
+  var timerApagar = null;
+  painel.addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    var acao = b.getAttribute('data-acao');
+    if (acao === 'fechar-painel') fecharPainel();
+    else if (acao === 'tentar') { if (sujo && podeEditar()) salvarRemoto(); else sincronizar(); }
+    else if (acao === 'baixar') {
+      var blob = new Blob([JSON.stringify({ documento: DOC, versao: 1, anotacoes: limpo(visiveis()) }, null, 2)], { type: 'application/json' });
+      var url = URL.createObjectURL(blob), a = document.createElement('a');
+      a.href = url; a.download = ARQ; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function () { URL.revokeObjectURL(url); }, 1500);
+    }
+    else if (acao === 'apagar') {
+      if (!b.classList.contains('anot-confirmar')) {
+        b.classList.add('anot-confirmar'); b.textContent = 'Confirmar: apagar tudo';
+        clearTimeout(timerApagar);
+        timerApagar = setTimeout(function () { b.classList.remove('anot-confirmar'); b.textContent = 'Apagar tudo'; }, 4000);
+        return;
+      }
+      clearTimeout(timerApagar); b.classList.remove('anot-confirmar'); b.textContent = 'Apagar tudo';
+      var t = agora();
+      visiveis().forEach(function (a) { a.apagado = true; a.atualizado = t; });
+      renderizar(); agendarSalvar();
+    }
+    else if (acao === 'desconectar') {
+      cfg.token = ''; guardarCfg(); preencherForm();
+      ghMsg.className = 'anot-gh-msg'; ghMsg.textContent = 'Desconectado. Este computador agora só vê as anotações.';
+      setEstado('leitura');
+    }
+  });
+  ghForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var f = ghForm.elements;
+    var novo = {
+      owner: f.owner.value.trim(), repo: f.repo.value.trim(), branch: f.branch.value.trim() || 'main',
+      pasta: f.pasta.value.trim().replace(/^\/+|\/+$/g, ''), token: f.token.value.trim() || cfg.token
+    };
+    ghMsg.className = 'anot-gh-msg';
+    if (!novo.owner || !novo.repo) { ghMsg.className += ' erro'; ghMsg.textContent = 'Preencha o usuário e o repositório.'; return; }
+    if (!novo.token) { ghMsg.className += ' erro'; ghMsg.textContent = 'Cole o token do GitHub.'; return; }
+    ghMsg.textContent = 'Verificando…';
+    api('GET', '/repos/' + encodeURIComponent(novo.owner) + '/' + encodeURIComponent(novo.repo), null, novo.token).then(function (r) {
+      if (r.status === 401) throw new Error('Token inválido ou expirado.');
+      if (r.status === 404) throw new Error('Repositório não encontrado, ou o token não tem acesso a ele.');
+      if (!r.ok) throw new Error('O GitHub respondeu com erro ' + r.status + '.');
+      var mudouArquivo = novo.owner !== cfg.owner || novo.repo !== cfg.repo || novo.branch !== cfg.branch || novo.pasta !== cfg.pasta;
+      cfg = novo; guardarCfg(); preencherForm();
+      if (mudouArquivo) { sha = null; if (!sujo) lista = []; }
+      ghMsg.textContent = 'Conectado. As anotações deste computador agora são salvas no GitHub.';
+      return sincronizar();
+    }).catch(function (err) {
+      ghMsg.className = 'anot-gh-msg erro';
+      ghMsg.textContent = (err && err.message && !/fetch/i.test(err.message)) ? err.message : 'Não foi possível falar com o GitHub. Verifique a internet.';
+    });
+  });
+
+  // ---------------- teclado, foco e saída ----------------
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    if (popId) fecharPop(true);
+    else if (!painel.hidden) fecharPainel();
+    else if (!tb.hidden) esconderToolbar(true);
+  });
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'visible' && !sujo && !salvando && !popId && Date.now() - ultimaSync > 20000) sincronizar();
+  });
+  window.addEventListener('beforeunload', function (e) {
+    if (popId) fecharPop(true);
+    if (sujo && podeEditar()) { e.preventDefault(); e.returnValue = ''; }
+  });
+
+  // ---------------- início ----------------
+  renderizar();
+  setEstado('carregando');
+  sincronizar();
+})();
 </script>
 </body>
 </html>
