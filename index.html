@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Seu salário, seu mês — roteiro de apresentação</title>
-<meta name="description" content="Roteiro da palestra “Seu salário, seu mês — saúde financeira no dia a dia”: estrutura, slides e notas de fala.">
+<meta name="description" content="Roteiro da palestra “Seu salário, seu mês — saúde financeira no dia a dia”: estrutura, os 28 slides e as notas de fala.">
 <meta name="theme-color" content="#1f6f4a">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231f6f4a'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='700' fill='white' text-anchor='middle'%3ER$%3C/text%3E%3C/svg%3E">
 <style>
@@ -181,6 +181,11 @@
     background: var(--ink); color: var(--bg); font-variant-numeric: tabular-nums;
   }
   .slide h4 { margin: 0; font-size: 1.2rem; }
+  .ver-slide {
+    margin-left: auto; flex: none; font-size: .8rem; font-weight: 600; white-space: nowrap; text-decoration: none;
+    padding: .25rem .6rem; border: 1px solid var(--line); border-radius: 8px; color: var(--muted);
+  }
+  .ver-slide:hover { color: var(--accent); border-color: var(--accent); }
   .lbl {
     display: block; font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 700;
     margin-bottom: .35rem;
@@ -273,7 +278,7 @@
     :root { --bg: #fff; --surface: #fff; --ink: #000; --muted: #444; --line: #ccc; --screen-bg: #f1f1f1; --screen-ink: #000; --screen-muted: #555; }
     body { font-size: 11.5pt; }
     .hero { background: none; }
-    .tools, .toc-wrap { display: none !important; }
+    .tools, .toc-wrap, .ver-slide { display: none !important; }
     .layout { display: block; padding: 0 0 1rem; }
     main { max-width: none; }
     .tela b { color: #000; }
@@ -454,6 +459,7 @@
   .anot-gh-form p { margin: 0 0 .6rem; color: var(--muted); font-size: .84rem; }
   .anot-gh-form ol { margin: 0 0 .8rem; padding-left: 1.2rem; color: var(--muted); font-size: .84rem; }
   .anot-gh-form ol li { margin-bottom: .25rem; }
+  .anot-gh-form code { font-size: .85em; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 0 .25em; }
   .anot-gh-form label { display: block; font-size: .78rem; font-weight: 700; color: var(--muted); margin-bottom: .5rem; }
   .anot-gh-form input {
     display: block; width: 100%; margin-top: .2rem; font: inherit; font-size: .9rem; font-weight: 400;
@@ -474,12 +480,14 @@
     <p class="sub">Saúde financeira no dia a dia</p>
     <ul class="chips">
       <li><b>60 min</b> de palestra</li>
-      <li><b>22</b> slides</li>
+      <li><b>28</b> slides</li>
+      <li><b>8</b> partes</li>
       <li>valores em reais são <b>fictícios</b></li>
     </ul>
     <div class="tools">
       <button class="btn" id="btn-falas" type="button" aria-pressed="false">Mostrar só as falas</button>
       <button class="btn" id="btn-imprimir" type="button">Imprimir ou salvar em PDF</button>
+      <a class="btn" href="https://financeiro13-nova.github.io/Palestra-Saude-Financeira/" target="_blank" rel="noopener">Abrir a apresentação ↗</a>
       <a class="btn" href="exercicio.html">Exercício prático ↗</a>
     </div>
     <p class="dica">Dica: selecione qualquer trecho para <b>marcar</b> ou <b>comentar</b>. As anotações ficam salvas no repositório do GitHub e aparecem em qualquer computador que abrir o link.</p>
@@ -500,9 +508,10 @@
             <li><a href="#bloco-abertura">Abertura</a></li>
             <li><a href="#bloco-2">2. O dinheiro que entra</a></li>
             <li><a href="#bloco-3">3. Conhecendo os gastos</a></li>
-            <li><a href="#bloco-4">4. Organizando o mês</a></li>
-            <li><a href="#bloco-5">5. Dívidas e parcelas</a></li>
-            <li><a href="#bloco-6">6. Imprevistos e objetivos</a></li>
+            <li><a href="#bloco-4">4. Seu cronograma financeiro</a></li>
+            <li><a href="#bloco-5">5. Organizando o mês</a></li>
+            <li><a href="#bloco-6">6. Dívidas e parcelas</a></li>
+            <li><a href="#bloco-7">7. Imprevistos e objetivos</a></li>
             <li><a href="#bloco-encerramento">Encerramento</a></li>
           </ol>
         </li>
@@ -536,6 +545,7 @@
       <ol class="linha" aria-label="Linha da palestra">
         <li>o que entra</li><li class="seta" aria-hidden="true">→</li>
         <li>o que sai</li><li class="seta" aria-hidden="true">→</li>
+        <li>aonde quero chegar</li><li class="seta" aria-hidden="true">→</li>
         <li>quando vence</li><li class="seta" aria-hidden="true">→</li>
         <li>o que pesa no futuro</li><li class="seta" aria-hidden="true">→</li>
         <li>como se proteger</li>
@@ -543,13 +553,14 @@
       <p>Se você se perder no meio, volte para essa linha.</p>
 
       <div class="faixa" aria-hidden="true">
-        <span class="t1" style="flex:7"><b>Abertura</b><small>7 min</small></span>
-        <span class="t2" style="flex:7"><b>Entra</b><small>7 min</small></span>
-        <span class="t1" style="flex:10"><b>Gastos</b><small>10 min</small></span>
-        <span class="t2" style="flex:14"><b>Mês</b><small>14 min</small></span>
-        <span class="t1" style="flex:10"><b>Dívidas</b><small>10 min</small></span>
-        <span class="t2" style="flex:6"><b>Imprev.</b><small>6 min</small></span>
-        <span class="t1" style="flex:6"><b>Fim</b><small>6 min</small></span>
+        <span class="t1" style="flex:5"><b>Abertura</b><small>5 min</small></span>
+        <span class="t2" style="flex:5"><b>Entra</b><small>5 min</small></span>
+        <span class="t1" style="flex:8"><b>Gastos</b><small>8 min</small></span>
+        <span class="t2" style="flex:10"><b>Plano</b><small>10 min</small></span>
+        <span class="t1" style="flex:13"><b>Mês</b><small>13 min</small></span>
+        <span class="t2" style="flex:9"><b>Dívidas</b><small>9 min</small></span>
+        <span class="t1" style="flex:4"><b>Imprev.</b><small>4 min</small></span>
+        <span class="t2" style="flex:6"><b>Fim</b><small>6 min</small></span>
       </div>
       <div class="faixa-legenda" aria-hidden="true"><span>0 min</span><span>30 min</span><span>60 min</span></div>
 
@@ -559,20 +570,21 @@
             <tr><th>Parte</th><th>Tempo</th><th>Slides</th><th>O que a pessoa deve levar</th></tr>
           </thead>
           <tbody>
-            <tr><td data-label="Parte"><a href="#bloco-abertura">Abertura</a></td><td data-label="Tempo" class="nw">0–7 min</td><td data-label="Slides" class="nw">1–3</td><td data-label="O que levar">Não saber para onde vai o dinheiro é comum e não é falha de caráter.</td></tr>
-            <tr><td data-label="Parte"><a href="#bloco-2">2. O dinheiro que entra</a></td><td data-label="Tempo" class="nw">7–14 min</td><td data-label="Slides" class="nw">4–5</td><td data-label="O que levar">O salário do contrato não é o dinheiro que cai na conta.</td></tr>
-            <tr><td data-label="Parte"><a href="#bloco-3">3. Conhecendo os gastos</a></td><td data-label="Tempo" class="nw">14–24 min</td><td data-label="Slides" class="nw">6–9</td><td data-label="O que levar">Gastos têm tipos diferentes; lazer faz parte da vida.</td></tr>
-            <tr><td data-label="Parte"><a href="#bloco-4">4. Organizando o mês</a></td><td data-label="Tempo" class="nw">24–38 min</td><td data-label="Slides" class="nw">10–12</td><td data-label="O que levar">Anotar entradas, saídas e datas de vencimento já muda o mês.</td></tr>
-            <tr><td data-label="Parte"><a href="#bloco-5">5. Dívidas e parcelas</a></td><td data-label="Tempo" class="nw">38–48 min</td><td data-label="Slides" class="nw">13–16</td><td data-label="O que levar">Limite não é salário; parcela tem um valor total.</td></tr>
-            <tr><td data-label="Parte"><a href="#bloco-6">6. Imprevistos e pequenos objetivos</a></td><td data-label="Tempo" class="nw">48–54 min</td><td data-label="Slides" class="nw">17–18</td><td data-label="O que levar">Guardar começa pequeno e no ritmo possível.</td></tr>
-            <tr><td data-label="Parte"><a href="#bloco-encerramento">Encerramento</a></td><td data-label="Tempo" class="nw">54–60 min</td><td data-label="Slides" class="nw">19–21</td><td data-label="O que levar">Três ideias e uma tarefa simples para a semana.</td></tr>
+            <tr><td data-label="Parte"><a href="#bloco-abertura">Abertura</a></td><td data-label="Tempo" class="nw">0–5 min</td><td data-label="Slides" class="nw">1–3</td><td data-label="O que levar">Não saber para onde vai o dinheiro é comum e não é falha de caráter.</td></tr>
+            <tr><td data-label="Parte"><a href="#bloco-2">2. O dinheiro que entra</a></td><td data-label="Tempo" class="nw">5–10 min</td><td data-label="Slides" class="nw">4–5</td><td data-label="O que levar">O salário do contrato não é o dinheiro que cai na conta.</td></tr>
+            <tr><td data-label="Parte"><a href="#bloco-3">3. Conhecendo os gastos</a></td><td data-label="Tempo" class="nw">10–18 min</td><td data-label="Slides" class="nw">6–9</td><td data-label="O que levar">Gastos têm tipos diferentes; lazer faz parte da vida.</td></tr>
+            <tr><td data-label="Parte"><a href="#bloco-4">4. Seu cronograma financeiro</a></td><td data-label="Tempo" class="nw">18–28 min</td><td data-label="Slides" class="nw">10–15</td><td data-label="O que levar">Um objetivo com valor, prazo e um aporte que cabe no mês vira um plano.</td></tr>
+            <tr><td data-label="Parte"><a href="#bloco-5">5. Organizando o mês</a></td><td data-label="Tempo" class="nw">28–41 min</td><td data-label="Slides" class="nw">16–18</td><td data-label="O que levar">Anotar entradas, saídas e datas de vencimento já muda o mês.</td></tr>
+            <tr><td data-label="Parte"><a href="#bloco-6">6. Dívidas e parcelas</a></td><td data-label="Tempo" class="nw">41–50 min</td><td data-label="Slides" class="nw">19–22</td><td data-label="O que levar">Limite não é salário; parcela tem um valor total.</td></tr>
+            <tr><td data-label="Parte"><a href="#bloco-7">7. Imprevistos e objetivos</a></td><td data-label="Tempo" class="nw">50–54 min</td><td data-label="Slides" class="nw">23–24</td><td data-label="O que levar">Guardar começa pequeno e no ritmo possível.</td></tr>
+            <tr><td data-label="Parte"><a href="#bloco-encerramento">Encerramento</a></td><td data-label="Tempo" class="nw">54–60 min</td><td data-label="Slides" class="nw">25–27</td><td data-label="O que levar">Três ideias e uma tarefa simples para a semana.</td></tr>
           </tbody>
         </table>
       </div>
 
       <div class="tres">
         <div class="card"><h4>Abertura</h4><p>Comece pela pergunta do salário, sem slide carregado. Deixe claro que ninguém está ali para ser julgado. Dois dados do Banco Central mostram que a dificuldade é comum.</p></div>
-        <div class="card"><h4>Desenvolvimento</h4><p>Os blocos 2 a 6 usam a mesma pessoa fictícia, a Ana, do início ao fim. Assim, o público acompanha uma história, e não números soltos. A Bia, outra pessoa fictícia, aparece só no bloco 5 para mostrar quando a renda não cobre o básico.</p></div>
+        <div class="card"><h4>Desenvolvimento</h4><p>Os blocos 2 a 6 usam a mesma pessoa fictícia, a Ana, do início ao fim. Assim, o público acompanha uma história, e não números soltos. O cronograma do bloco 4 usa os R$&nbsp;160 que sobram no mês da Ana, conta que o público faz junto no bloco 5. A Bia, outra pessoa fictícia, aparece só no bloco 6 para mostrar quando a renda não cobre o básico.</p></div>
         <div class="card"><h4>Encerramento</h4><p>Não traga conteúdo novo. Retome as três ideias, proponha a atividade da semana e termine com a frase final.</p></div>
       </div>
     </section>
@@ -580,28 +592,28 @@
     <!-- ===================== SLIDES ===================== -->
     <section id="slides">
       <h2>Slides e notas de fala</h2>
-      <p>Uma ideia por slide. <strong>“Na tela”</strong> é o texto que aparece; <strong>“Fala”</strong> é o que você diz, com suas palavras. Todos os valores em reais são <strong>exemplos fictícios</strong>.</p>
+      <p>Uma ideia por slide, na ordem da <a href="https://financeiro13-nova.github.io/Palestra-Saude-Financeira/" target="_blank" rel="noopener">apresentação</a> (28 slides em 8 partes). <strong>“Na tela”</strong> é o que aparece no slide; <strong>“Fala”</strong> é o que você diz, com suas palavras. Todos os valores em reais são <strong>exemplos fictícios</strong>.</p>
       <ul class="legenda">
         <li><i class="lg-tela"></i>Na tela</li>
         <li><i class="lg-fala"></i>Fala (o que você diz)</li>
-        <li><i class="lg-nota"></i>Confira antes de apresentar</li>
+        <li><i class="lg-nota"></i>Confira ou ajuste antes de apresentar</li>
         <li>▸ <em>Itálico: orientação para você, não é para ler em voz alta</em></li>
       </ul>
 
       <!-- Abertura -->
-      <h3 id="bloco-abertura">Abertura <span class="tempo">0–7 min · slides 1–3</span></h3>
+      <h3 id="bloco-abertura">Abertura <span class="tempo">0–5 min · slides 1–3</span></h3>
 
       <article class="slide" id="slide-1">
-        <div class="slide-head"><span class="slide-num">1</span><h4>Seu salário, seu mês</h4></div>
-        <div class="tela"><span class="lbl">Na tela</span><p>Título e a frase <b>“Uma conversa simples sobre o dinheiro do dia a dia”</b>.</p></div>
+        <div class="slide-head"><span class="slide-num">1</span><h4>Seu salário, seu mês</h4><a class="ver-slide" data-anot-ui href="https://financeiro13-nova.github.io/Palestra-Saude-Financeira/#slide-1" target="_blank" rel="noopener" title="Abrir o slide 1 na apresentação">ver slide ↗</a></div>
+        <div class="tela"><span class="lbl">Na tela</span><p>Sobretítulo <b>“Saúde financeira no dia a dia”</b>, o título e a frase <b>“Uma conversa simples sobre o dinheiro do dia a dia”</b>.</p></div>
         <div class="fala"><span class="lbl">Fala</span>
           <p class="dito">Bom dia. Hoje não vou falar de ficar rico nem de investimento. Vou falar do dinheiro que passa pela nossa mão todo mês. E quero que seja uma conversa, não uma aula.</p>
         </div>
       </article>
 
       <article class="slide" id="slide-2">
-        <div class="slide-head"><span class="slide-num">2</span><h4>Você sabe para onde vai seu salário?</h4></div>
-        <div class="tela"><span class="lbl">Na tela</span><p>Só a pergunta.</p></div>
+        <div class="slide-head"><span class="slide-num">2</span><h4>Você sabe para onde vai o seu salário?</h4><a class="ver-slide" data-anot-ui href="https://financeiro13-nova.github.io/Palestra-Saude-Financeira/#slide-2" target="_blank" rel="noopener" title="Abrir o slide 2 na apresentação">ver slide ↗</a></div>
+        <div class="tela"><span class="lbl">Na tela</span><p>A pergunta e duas barras, <b>Mês</b> e <b>Dinheiro</b>, mostrando o dinheiro acabando antes do mês.</p></div>
         <div class="fala"><span class="lbl">Fala</span>
           <p class="dito">Quem aqui já chegou perto do fim do mês e pensou: o dinheiro acabou, mas o mês não?</p>
           <p class="dir">Espere as mãos se levantarem.</p>
@@ -611,55 +623,55 @@
       </article>
 
       <article class="slide" id="slide-3">
-        <div class="slide-head"><span class="slide-num">3</span><h4>Você não está sozinho</h4></div>
-        <div class="tela"><span class="lbl">Na tela</span><p><b>“Mais da metade não faz orçamento”</b> e <b>“7 em cada 10 não guardaram nada em um ano”</b>. Fonte embaixo.</p></div>
+        <div class="slide-head"><span class="slide-num">3</span><h4>Você não está sozinho</h4><a class="ver-slide" data-anot-ui href="https://financeiro13-nova.github.io/Palestra-Saude-Financeira/#slide-3" target="_blank" rel="noopener" title="Abrir o slide 3 na apresentação">ver slide ↗</a></div>
+        <div class="tela"><span class="lbl">Na tela</span><p><b>56%</b> não faziam orçamento (não anotavam quanto entra e quanto sai) e <b>69%</b> não conseguiram guardar nada nos 12 meses anteriores. Frase: “Organizar dinheiro é algo que se aprende.” Fonte: Banco Central do Brasil, Pesquisa de Saúde Financeira do Brasileiro.</p></div>
         <div class="fala"><span class="lbl">Fala</span>
           <p class="dito">Uma pesquisa do Banco Central mostrou isso. Orçamento é só anotar quanto entra e quanto sai. Isso não quer dizer que as pessoas não saibam cuidar do dinheiro. Muitas vezes, a gente aprendeu a trabalhar, mas ninguém ensinou a gente a organizar o salário. E às vezes o dinheiro simplesmente não dá. Por isso, aqui ninguém está sendo julgado.</p>
         </div>
         <aside class="nota"><span class="lbl">Confira antes</span><p>Antes de apresentar, confirme os números (56% e 69%) e o ano da pesquisa no site do Banco Central.</p></aside>
       </article>
 
-      <!-- Bloco 2 -->
-      <h3 id="bloco-2">Bloco 2 — O dinheiro que entra <span class="tempo">7–14 min · slides 4–5</span></h3>
+      <!-- Bloco 2 — O dinheiro que entra -->
+      <h3 id="bloco-2">Bloco 2 — O dinheiro que entra <span class="tempo">5–10 min · slides 4–5</span></h3>
 
       <article class="slide" id="slide-4">
-        <div class="slide-head"><span class="slide-num">4</span><h4>Salário no papel × dinheiro na mão</h4></div>
-        <div class="tela"><span class="lbl">Na tela</span><p><b>“Salário no contrato: R$&nbsp;2.800 → Cai na conta: R$&nbsp;2.500”</b> (exemplo fictício).</p></div>
+        <div class="slide-head"><span class="slide-num">4</span><h4>Salário no papel × dinheiro na mão</h4><a class="ver-slide" data-anot-ui href="https://financeiro13-nova.github.io/Palestra-Saude-Financeira/#slide-4" target="_blank" rel="noopener" title="Abrir o slide 4 na apresentação">ver slide ↗</a></div>
+        <div class="tela"><span class="lbl">Na tela</span><p><b>Salário bruto</b> (o do contrato): R$&nbsp;2.800 · menos R$&nbsp;300 de descontos · <b>Salário líquido</b> (o que cai na conta): R$&nbsp;2.500. Frase: “O planejamento do mês começa pelo líquido.” Exemplo fictício: Ana.</p></div>
         <div class="fala"><span class="lbl">Fala</span>
           <p class="dito">Esta é a Ana. Ela não existe, mas vai nos acompanhar hoje. No contrato, o salário dela é R$&nbsp;2.800. Esse é o salário bruto, o valor antes dos descontos. O que cai na conta é R$&nbsp;2.500. Esse é o salário líquido, o que sobra depois dos descontos. Para organizar o mês, o planejamento começa pelo líquido. É com ele que a Ana paga as contas.</p>
         </div>
       </article>
 
       <article class="slide" id="slide-5">
-        <div class="slide-head"><span class="slide-num">5</span><h4>Confira seu holerite</h4></div>
-        <div class="tela"><span class="lbl">Na tela</span><p><b>“Holerite = o papel que mostra o que entrou e o que foi descontado”</b> e três exemplos: aposentadoria (INSS), vale-transporte, empréstimo descontado em folha.</p></div>
+        <div class="slide-head"><span class="slide-num">5</span><h4>Confira seu holerite</h4><a class="ver-slide" data-anot-ui href="https://financeiro13-nova.github.io/Palestra-Saude-Financeira/#slide-5" target="_blank" rel="noopener" title="Abrir o slide 5 na apresentação">ver slide ↗</a></div>
+        <div class="tela"><span class="lbl">Na tela</span><p>O holerite da Ana: salário bruto de R$&nbsp;2.800; descontos de aposentadoria (INSS, obrigatório), vale-transporte (para quem usa) e empréstimo em folha (direto do salário); total de descontos de R$&nbsp;300; líquido de R$&nbsp;2.500. Ao lado: <b>“É o papel que mostra o que entrou e o que foi descontado”</b> e a dica “Recebe comissão ou hora extra? Planeje o mês pelo valor que você tem certeza de receber.” Valores fictícios.</p></div>
         <div class="fala"><span class="lbl">Fala</span>
           <p class="dito">O holerite, ou contracheque, mostra cada desconto. Alguns são obrigatórios, como a contribuição para a aposentadoria. Outros dependem de cada um, como plano de saúde ou um empréstimo descontado direto do salário. No exemplo da Ana, os descontos somam R$&nbsp;300. Os valores são inventados e não servem de referência para um cálculo real. Se parte do que você recebe muda de um mês para o outro, como comissão ou hora extra, uma dica é planejar o mês pelo valor que você tem certeza de receber.</p>
         </div>
       </article>
 
-      <!-- Bloco 3 -->
-      <h3 id="bloco-3">Bloco 3 — Conhecendo os gastos <span class="tempo">14–24 min · slides 6–9</span></h3>
+      <!-- Bloco 3 — Conhecendo os gastos -->
+      <h3 id="bloco-3">Bloco 3 — Conhecendo os gastos <span class="tempo">10–18 min · slides 6–9</span></h3>
 
       <article class="slide" id="slide-6">
-        <div class="slide-head"><span class="slide-num">6</span><h4>Três tipos de gasto</h4></div>
-        <div class="tela"><span class="lbl">Na tela</span><p><b>Essenciais</b> · <b>Compromissos</b> · <b>Ajustáveis</b>.</p></div>
+        <div class="slide-head"><span class="slide-num">6</span><h4>Três formas de distribuir seus gastos</h4><a class="ver-slide" data-anot-ui href="https://financeiro13-nova.github.io/Palestra-Saude-Financeira/#slide-6" target="_blank" rel="noopener" title="Abrir o slide 6 na apresentação">ver slide ↗</a></div>
+        <div class="tela"><span class="lbl">Na tela</span><p>Três cartões: <b>Essenciais</b> (mantêm a vida funcionando: aluguel, mercado, luz, água, transporte, remédios) · <b>Compromissos</b> (já prometidos a alguém: parcelas, empréstimos, acordos) · <b>Não essenciais</b> (dá para aumentar, reduzir ou adiar: delivery, lazer, roupas, assinaturas). Rodapé: “Cada pessoa decide o que é essencial na própria vida.”</p></div>
         <div class="fala"><span class="lbl">Fala</span>
-          <p class="dito">Essenciais mantêm a vida funcionando: aluguel, mercado, luz, água, transporte, remédios. Compromissos são valores que você já prometeu pagar: parcelas, empréstimos, acordos. Ajustáveis são os gastos que dá para aumentar, diminuir ou adiar: delivery, lazer, roupas, assinaturas. Internet, por exemplo, pode ser essencial para quem trabalha ou estuda com ela. Cada pessoa decide o que é essencial na própria vida.</p>
+          <p class="dito">Essenciais mantêm a vida funcionando: aluguel, mercado, luz, água, transporte, remédios. Compromissos são valores que você já prometeu pagar: parcelas, empréstimos, acordos. Não essenciais são os gastos que dá para aumentar, diminuir ou adiar: delivery, lazer, roupas, assinaturas. Internet, por exemplo, pode ser essencial para quem trabalha ou estuda com ela. Cada pessoa decide o que é essencial na própria vida.</p>
         </div>
       </article>
 
       <article class="slide" id="slide-7">
-        <div class="slide-head"><span class="slide-num">7</span><h4>Lazer não é desperdício</h4></div>
-        <div class="tela"><span class="lbl">Na tela</span><p><b>“O objetivo não é gastar menos em tudo. É escolher melhor.”</b></p></div>
+        <div class="slide-head"><span class="slide-num">7</span><h4>Lazer faz parte da vida</h4><a class="ver-slide" data-anot-ui href="https://financeiro13-nova.github.io/Palestra-Saude-Financeira/#slide-7" target="_blank" rel="noopener" title="Abrir o slide 7 na apresentação">ver slide ↗</a></div>
+        <div class="tela"><span class="lbl">Na tela</span><p><b>“Lazer faz parte da vida.”</b> e a frase “A ideia é que ele seja uma escolha, e não algo que some sem a gente perceber.”</p></div>
         <div class="fala"><span class="lbl">Fala</span>
-          <p class="dito">Eu não vou dizer para vocês pararem de sair ou de pedir um lanche. Dinheiro também serve para viver. A ideia é que o lazer seja uma escolha, e não algo que some sem a gente perceber.</p>
+          <p class="dito">Eu não vou dizer para vocês pararem de sair ou de pedir um lanche. Dinheiro também serve para viver. O objetivo não é gastar menos em tudo, é escolher melhor. A ideia é que o lazer seja uma escolha, e não algo que some sem a gente perceber.</p>
         </div>
       </article>
 
       <article class="slide" id="slide-8">
-        <div class="slide-head"><span class="slide-num">8</span><h4>Quatro tipos de gasto que consomem o dinheiro</h4></div>
-        <div class="tela"><span class="lbl">Na tela</span><p>A sua imagem (formiga, fantasma, vampiro e zumbi).</p></div>
+        <div class="slide-head"><span class="slide-num">8</span><h4>Quatro gastos que somem com o dinheiro</h4><a class="ver-slide" data-anot-ui href="https://financeiro13-nova.github.io/Palestra-Saude-Financeira/#slide-8" target="_blank" rel="noopener" title="Abrir o slide 8 na apresentação">ver slide ↗</a></div>
+        <div class="tela"><span class="lbl">Na tela</span><p><b>Formiga</b>: pequenos valores que se acumulam · <b>Fantasma</b>: assinaturas e cobranças que você quase não aproveita · <b>Vampiro</b>: desperdícios que aumentam as contas da casa · <b>Zumbi</b>: juros, multas e dívidas que continuam pesando no mês seguinte.</p></div>
         <div class="fala"><span class="lbl">Fala</span>
           <p class="dito">Uma forma divertida de lembrar. <strong>Formiga:</strong> valores pequenos que se somam, como café e lanche. <strong>Fantasma:</strong> cobranças que se repetem por algo que você nem usa mais, como uma assinatura esquecida. <strong>Vampiro:</strong> desperdícios nas contas de casa, como luz acesa ou torneira pingando. <strong>Zumbi:</strong> juros e multas que voltam todo mês, como os de uma conta paga com atraso.</p>
           <p class="dir">Use um tom leve. O zumbi não é culpa de ninguém; é só um custo que vale a pena enxergar.</p>
@@ -667,131 +679,201 @@
       </article>
 
       <article class="slide" id="slide-9">
-        <div class="slide-head"><span class="slide-num">9</span><h4>O gasto pequeno que se repete</h4></div>
-        <div class="tela"><span class="lbl">Na tela</span><p><b>“R$&nbsp;10 por dia × 30 dias = R$&nbsp;300 no mês”</b>.</p></div>
+        <div class="slide-head"><span class="slide-num">9</span><h4>O gasto pequeno que se repete</h4><a class="ver-slide" data-anot-ui href="https://financeiro13-nova.github.io/Palestra-Saude-Financeira/#slide-9" target="_blank" rel="noopener" title="Abrir o slide 9 na apresentação">ver slide ↗</a></div>
+        <div class="tela"><span class="lbl">Na tela</span><p><b>R$&nbsp;10 por dia × 30 dias = R$&nbsp;300 no mês</b> e a frase “O problema não é o café. É não perceber quanto ele soma.” Valores fictícios.</p></div>
         <div class="fala"><span class="lbl">Fala</span>
           <p class="dito">R$&nbsp;10 parece pouco. Repetido todo dia, vira R$&nbsp;300 no mês. O problema não é o café. É não perceber quanto ele soma. Se fizer sentido para você, ótimo. O importante é que seja uma decisão consciente.</p>
         </div>
       </article>
 
-      <!-- Bloco 4 -->
-      <h3 id="bloco-4">Bloco 4 — Organizando o mês <span class="tempo">24–38 min · slides 10–12</span></h3>
+      <!-- Bloco 4 — Seu cronograma financeiro -->
+      <h3 id="bloco-4">Bloco 4 — Seu cronograma financeiro <span class="tempo">18–28 min · slides 10–15</span></h3>
 
       <article class="slide" id="slide-10">
-        <div class="slide-head"><span class="slide-num">10</span><h4>Entrou, saiu, quando vence</h4></div>
-        <div class="tela"><span class="lbl">Na tela</span><p>Três colunas — <b>Entradas</b> · <b>Saídas</b> · <b>Data de vencimento</b>.</p></div>
+        <div class="slide-head"><span class="slide-num">10</span><h4>Cronograma e aporte</h4><a class="ver-slide" data-anot-ui href="https://financeiro13-nova.github.io/Palestra-Saude-Financeira/#slide-10" target="_blank" rel="noopener" title="Abrir o slide 10 na apresentação">ver slide ↗</a></div>
+        <div class="tela"><span class="lbl">Na tela</span><p><b>“Um cronograma diz o que você quer, quanto custa e quando chega.”</b> e o destaque “<b>Aporte</b> é o valor que você separa todo mês para um objetivo.”</p></div>
+        <div class="fala"><span class="lbl">Fala</span>
+          <p class="dito">Até agora a gente olhou para o mês. Agora vamos olhar um pouco mais para a frente. Um cronograma financeiro é um plano simples: o que eu quero, quanto custa e quando quero chegar lá. E aporte é só o nome do valor que você separa todo mês para esse objetivo. Pode ser R$&nbsp;20, pode ser R$&nbsp;200. É o valor que cabe.</p>
+        </div>
+      </article>
+
+      <article class="slide" id="slide-11">
+        <div class="slide-head"><span class="slide-num">11</span><h4>Objetivos com prazo</h4><a class="ver-slide" data-anot-ui href="https://financeiro13-nova.github.io/Palestra-Saude-Financeira/#slide-11" target="_blank" rel="noopener" title="Abrir o slide 11 na apresentação">ver slide ↗</a></div>
+        <div class="tela"><span class="lbl">Na tela</span><p>Três barras: <b>curto prazo</b> (até 1 ano), <b>médio prazo</b> (de 1 a 3 anos) e <b>longo prazo</b> (mais de 3 anos), com exemplos: reserva para imprevistos e material escolar; trocar a geladeira e fazer um curso; entrada de um imóvel e aposentadoria. Rodapé: “Os exemplos são só ideias. Cada pessoa escolhe os seus objetivos.”</p></div>
+        <div class="fala"><span class="lbl">Fala</span>
+          <p class="dito">Objetivo de curto prazo é para até um ano, como montar uma reserva para imprevistos ou comprar o material escolar. Médio prazo, de um a três anos, como trocar a geladeira ou fazer um curso. Longo prazo, mais de três anos, como a entrada de um imóvel ou a aposentadoria. São só exemplos. Cada pessoa escolhe os seus, e ninguém precisa ter os três ao mesmo tempo.</p>
+        </div>
+      </article>
+
+      <article class="slide" id="slide-12">
+        <div class="slide-head"><span class="slide-num">12</span><h4>Comece pelo diagnóstico</h4><a class="ver-slide" data-anot-ui href="https://financeiro13-nova.github.io/Palestra-Saude-Financeira/#slide-12" target="_blank" rel="noopener" title="Abrir o slide 12 na apresentação">ver slide ↗</a></div>
+        <div class="tela"><span class="lbl">Na tela</span><p><b>Quanto entra − Quanto sai = Quanto posso separar</b> e a frase “O cronograma começa do que é possível hoje, não de um valor ideal.”</p></div>
+        <div class="fala"><span class="lbl">Fala</span>
+          <p class="dito">Antes de escolher quanto separar, a gente precisa saber de onde parte. É a conta que vimos até aqui: o salário líquido menos o que sai no mês. O resultado é quanto dá para separar. No próximo bloco, vamos fazer essa conta junto com a Ana. O cronograma começa desse número, e não de um valor que alguém disse que é o certo.</p>
+        </div>
+      </article>
+
+      <article class="slide" id="slide-13">
+        <div class="slide-head"><span class="slide-num">13</span><h4>O cronograma da Ana</h4><a class="ver-slide" data-anot-ui href="https://financeiro13-nova.github.io/Palestra-Saude-Financeira/#slide-13" target="_blank" rel="noopener" title="Abrir o slide 13 na apresentação">ver slide ↗</a></div>
+        <div class="tela"><span class="lbl">Na tela</span><p>“Se a Ana separar R$&nbsp;160 por mês”: uma linha do tempo de 15 meses. <b>Reserva</b> (R$&nbsp;500) com R$&nbsp;100 por mês e <b>material escolar</b> (R$&nbsp;300) com R$&nbsp;60 por mês, nos meses 1 a 5; depois, <b>geladeira</b> (R$&nbsp;1.600) com R$&nbsp;160 por mês, nos meses 6 a 15. Frase: “Quando um objetivo termina, o valor dele passa para o próximo.” Rodapé: exemplo fictício, sem rendimento.</p></div>
+        <div class="fala"><span class="lbl">Fala</span>
+          <p class="dito">Vamos imaginar que a Ana consiga separar R$&nbsp;160 por mês. Ela tem dois objetivos de curto prazo: uma reserva de R$&nbsp;500 e o material escolar de R$&nbsp;300. Separando R$&nbsp;100 para um e R$&nbsp;60 para o outro, em cinco meses os dois estão prontos. No sexto mês, os R$&nbsp;160 vão inteiros para a geladeira de R$&nbsp;1.600, que fica pronta em dez meses. Não estou contando rendimento nenhum, é só o dinheiro guardado. Quando um objetivo termina, o valor dele passa para o próximo.</p>
+        </div>
+        <aside class="nota"><span class="lbl">Contas conferidas</span><p>5 × R$&nbsp;100 = R$&nbsp;500; 5 × R$&nbsp;60 = R$&nbsp;300; R$&nbsp;100 + R$&nbsp;60 = R$&nbsp;160; 10 × R$&nbsp;160 = R$&nbsp;1.600; total de 15 meses.</p></aside>
+      </article>
+
+      <article class="slide" id="slide-14">
+        <div class="slide-head"><span class="slide-num">14</span><h4>Revise de tempos em tempos</h4><a class="ver-slide" data-anot-ui href="https://financeiro13-nova.github.io/Palestra-Saude-Financeira/#slide-14" target="_blank" rel="noopener" title="Abrir o slide 14 na apresentação">ver slide ↗</a></div>
+        <div class="tela"><span class="lbl">Na tela</span><p><b>“A cada 3 meses, ou quando algo mudar”</b> e três situações: o salário mudou · entrou uma conta nova · veio um imprevisto. Frase: “Mudar o plano não é fracassar. É o plano acompanhando a sua vida.”</p></div>
+        <div class="fala"><span class="lbl">Fala</span>
+          <p class="dito">Um cronograma não é uma promessa que não pode mudar. A cada três meses, ou sempre que algo mudar, vale olhar de novo: o salário mudou, entrou uma conta nova, aconteceu um imprevisto. Ajustar o plano não é fracassar. É o plano acompanhando a sua vida.</p>
+        </div>
+      </article>
+
+      <article class="slide" id="slide-15">
+        <div class="slide-head"><span class="slide-num">15</span><h4>E se não sobra nada?</h4><a class="ver-slide" data-anot-ui href="https://financeiro13-nova.github.io/Palestra-Saude-Financeira/#slide-15" target="_blank" rel="noopener" title="Abrir o slide 15 na apresentação">ver slide ↗</a></div>
+        <div class="tela"><span class="lbl">Na tela</span><p><b>“O primeiro objetivo pode ser fazer a conta fechar.”</b> e dois passos: 1. renegociar uma dívida ou rever um gasto; 2. só depois começar o aporte, mesmo que pequeno.</p></div>
+        <div class="fala"><span class="lbl">Fala</span>
+          <p class="dito">E se hoje não sobra nada? Isso acontece com muita gente, e não é culpa de ninguém. Nesse caso, o cronograma começa antes: o primeiro objetivo é fazer a conta fechar. Pode ser renegociar uma dívida ou rever um gasto. Só depois vem o aporte, mesmo que pequeno. Ficar um tempo com aporte zero também faz parte do plano. Daqui a pouco, vamos falar mais sobre quando a conta não fecha.</p>
+        </div>
+      </article>
+
+      <!-- Bloco 5 — Organizando o mês -->
+      <h3 id="bloco-5">Bloco 5 — Organizando o mês <span class="tempo">28–41 min · slides 16–18</span></h3>
+
+      <article class="slide" id="slide-16">
+        <div class="slide-head"><span class="slide-num">16</span><h4>Entrou, saiu, quando vence</h4><a class="ver-slide" data-anot-ui href="https://financeiro13-nova.github.io/Palestra-Saude-Financeira/#slide-16" target="_blank" rel="noopener" title="Abrir o slide 16 na apresentação">ver slide ↗</a></div>
+        <div class="tela"><span class="lbl">Na tela</span><p>Três colunas: <b>Entradas</b> (quanto cai na conta, e em que dia) · <b>Saídas</b> (cada conta e cada gasto do mês) · <b>Vencimento</b> (o último dia para pagar sem multa). Rodapé: “Caderno, celular ou planilha: vale o jeito que você vai usar.”</p></div>
         <div class="fala"><span class="lbl">Fala</span>
           <p class="dito">Para organizar o mês, bastam três informações: quanto entra, quanto sai e quando cada conta vence. Vencimento é o último dia para pagar sem multa. Dá para anotar no caderno, no celular ou numa planilha. O melhor jeito é aquele que você vai usar.</p>
         </div>
       </article>
 
-      <article class="slide" id="slide-11">
-        <div class="slide-head"><span class="slide-num">11</span><h4>O mês da Ana</h4></div>
-        <div class="tela"><span class="lbl">Na tela</span><p>A tabela do exercício prático, com os totais (exemplo fictício).</p></div>
+      <article class="slide" id="slide-17">
+        <div class="slide-head"><span class="slide-num">17</span><h4>O mês da Ana</h4><a class="ver-slide" data-anot-ui href="https://financeiro13-nova.github.io/Palestra-Saude-Financeira/#slide-17" target="_blank" rel="noopener" title="Abrir o slide 17 na apresentação">ver slide ↗</a></div>
+        <div class="tela"><span class="lbl">Na tela</span><p>A tabela com os 10 gastos da Ana (tipo, valor e vencimento) e os totais: entrada de R$&nbsp;2.500; essenciais R$&nbsp;1.740; compromissos R$&nbsp;230; não essenciais R$&nbsp;370; total gasto R$&nbsp;2.340; <b>sobra no mês de R$&nbsp;160</b>. Rodapé: salário líquido no dia 5; “dia 20” é a fatura do cartão. Tabela completa na <a href="exercicio.html" style="color:inherit">página do exercício</a>.</p></div>
         <div class="fala"><span class="lbl">Fala</span>
-          <p class="dir">Siga o roteiro do <a href="exercicio.html">exercício prático</a>, que está em uma página separada. Mostre que, depois de tudo, sobram R$&nbsp;160 para a Ana. Pergunte:</p>
+          <p class="dir">Conduza em cerca de 10 minutos.</p>
+          <p class="dir">1. Mostre só a entrada e pergunte:</p>
+          <p class="dito">Quanto vocês acham que sobra para a Ana?</p>
+          <p class="dir">2. Revele os gastos aos poucos, por tipo, e some junto com o público: essenciais R$&nbsp;1.740, compromissos R$&nbsp;230, não essenciais R$&nbsp;370. Total de R$&nbsp;2.340. Sobram R$&nbsp;160.</p>
+          <p class="dir">3. Pergunte:</p>
           <p class="dito">O que a Ana poderia fazer com esses R$&nbsp;160?</p>
           <p class="dir">Aceite as respostas sem dizer que existe uma única resposta certa.</p>
+          <p class="dir">4. Pergunte:</p>
+          <p class="dito">Se a Ana quisesse que sobrasse um pouco mais, onde ela mexeria?</p>
+          <p class="dir">Mostre que a escolha é dela: pode reduzir o delivery, cancelar uma assinatura que não usa ou manter tudo como está.</p>
+          <p class="dir">5. Feche:</p>
+          <p class="dito">A Ana não ganhou nem um real a mais. Ela só passou a enxergar o mês dela.</p>
         </div>
+        <aside class="nota"><span class="lbl">Ajuste no slide</span><p>Na tabela do slide, os gastos não essenciais aparecem como “Ajustável” e o total como “Ajustáveis”. O slide 6 chama esse grupo de “Não essenciais”; vale usar o mesmo nome nos dois.</p></aside>
       </article>
 
-      <article class="slide" id="slide-12">
-        <div class="slide-head"><span class="slide-num">12</span><h4>O calendário do mês</h4></div>
-        <div class="tela"><span class="lbl">Na tela</span><p>Uma linha do tempo do mês com o salário no dia 5 e as contas nos dias 10, 15 e 20.</p></div>
+      <article class="slide" id="slide-18">
+        <div class="slide-head"><span class="slide-num">18</span><h4>O calendário do mês</h4><a class="ver-slide" data-anot-ui href="https://financeiro13-nova.github.io/Palestra-Saude-Financeira/#slide-18" target="_blank" rel="noopener" title="Abrir o slide 18 na apresentação">ver slide ↗</a></div>
+        <div class="tela"><span class="lbl">Na tela</span><p>Uma linha do tempo do mês: <b>dia 5</b>, entra o salário (R$&nbsp;2.500); <b>dia 10</b>, aluguel (R$&nbsp;850); <b>dia 15</b>, luz, água, gás e internet (R$&nbsp;280); <b>dia 20</b>, fatura do cartão (R$&nbsp;290). Destaques: “R$&nbsp;290 separados no dia 5” e “No dia 5, separe o que vence depois.” Rodapé: fatura = parcelas (R$&nbsp;230) + assinaturas (R$&nbsp;60).</p></div>
         <div class="fala"><span class="lbl">Fala</span>
           <p class="dito">O salário da Ana cai no dia 5. A fatura do cartão vence no dia 20. Se ela não separar esse dinheiro no dia 5, ele pode ser gasto antes. Olhar as datas ajuda a evitar atraso, e atraso costuma gerar multa e juros.</p>
+          <p class="dir">A fatura do dia 20 soma R$&nbsp;290: R$&nbsp;150 + R$&nbsp;80 + R$&nbsp;60.</p>
         </div>
       </article>
 
-      <!-- Bloco 5 -->
-      <h3 id="bloco-5">Bloco 5 — Dívidas e compras parceladas <span class="tempo">38–48 min · slides 13–16</span></h3>
+      <!-- Bloco 6 — Dívidas e parcelas -->
+      <h3 id="bloco-6">Bloco 6 — Dívidas e parcelas <span class="tempo">41–50 min · slides 19–22</span></h3>
 
-      <article class="slide" id="slide-13">
-        <div class="slide-head"><span class="slide-num">13</span><h4>Limite não é salário</h4></div>
-        <div class="tela"><span class="lbl">Na tela</span><p><b>“Salário: R$&nbsp;2.500 · Limite do cartão: R$&nbsp;4.000 · Seu salário continua sendo R$&nbsp;2.500”</b>.</p></div>
+      <article class="slide" id="slide-19">
+        <div class="slide-head"><span class="slide-num">19</span><h4>Limite não é salário</h4><a class="ver-slide" data-anot-ui href="https://financeiro13-nova.github.io/Palestra-Saude-Financeira/#slide-19" target="_blank" rel="noopener" title="Abrir o slide 19 na apresentação">ver slide ↗</a></div>
+        <div class="tela"><span class="lbl">Na tela</span><p><b>Salário</b> (dinheiro seu): R$&nbsp;2.500 · <b>Limite do cartão</b> (empréstimo do banco): R$&nbsp;4.000 · “O cartão muda o dia de pagar. Não aumenta o salário.” Valores fictícios.</p></div>
         <div class="fala"><span class="lbl">Fala</span>
-          <p class="dito">Limite é o valor máximo que o banco deixa você gastar no cartão. É um empréstimo, não é dinheiro seu. O cartão muda o dia em que você paga. Ele não aumenta o seu salário.</p>
+          <p class="dito">Limite é o valor máximo que o banco deixa você gastar no cartão. É um empréstimo, não é dinheiro seu. Se você ganha R$&nbsp;2.500 e tem R$&nbsp;4.000 de limite, seu salário continua sendo R$&nbsp;2.500. O cartão muda o dia em que você paga. Ele não aumenta o seu salário.</p>
         </div>
       </article>
 
-      <article class="slide" id="slide-14">
-        <div class="slide-head"><span class="slide-num">14</span><h4>A parcela e o total</h4></div>
-        <div class="tela"><span class="lbl">Na tela</span><p><b>“Celular: 10 × R$&nbsp;150 = R$&nbsp;1.500”</b> e <b>“Todas as parcelas juntas: R$&nbsp;650 por mês”</b>.</p></div>
+      <article class="slide" id="slide-20">
+        <div class="slide-head"><span class="slide-num">20</span><h4>A parcela e o total</h4><a class="ver-slide" data-anot-ui href="https://financeiro13-nova.github.io/Palestra-Saude-Financeira/#slide-20" target="_blank" rel="noopener" title="Abrir o slide 20 na apresentação">ver slide ↗</a></div>
+        <div class="tela"><span class="lbl">Na tela</span><p><b>Um celular: 10 × R$&nbsp;150 = R$&nbsp;1.500</b> e “Dez meses do salário já comprometidos”. Ao lado, todas as parcelas juntas dentro de um salário de R$&nbsp;2.500: celular R$&nbsp;150, roupa R$&nbsp;80, tênis R$&nbsp;100, TV R$&nbsp;120 e empréstimo R$&nbsp;200 = <b>R$&nbsp;650 por mês, 26% do salário</b>. Rodapé: “Pergunte: quanto vou pagar no total, e por quantos meses?” Valores fictícios.</p></div>
         <div class="fala"><span class="lbl">Fala</span>
           <p class="dito">Parcelar é dividir uma compra em vários pagamentos. R$&nbsp;150 parece leve, mas são R$&nbsp;1.500 no total e uma parte do salário comprometida por dez meses. Agora imagine: celular R$&nbsp;150, roupa R$&nbsp;80, tênis R$&nbsp;100, TV R$&nbsp;120 e um empréstimo de R$&nbsp;200. São R$&nbsp;650 por mês, mais de um quarto de um salário de R$&nbsp;2.500. A pergunta não é só “cabe no mês?”. É “quanto vou pagar no total e por quantos meses?”</p>
         </div>
+        <aside class="nota"><span class="lbl">Ajuste no slide</span><p>A frase “Dez meses do salário já comprometidos” dá a entender que o salário inteiro fica preso por dez meses. Na fala, o roteiro usa “uma parte do salário comprometida por dez meses”; vale ajustar o slide também.</p></aside>
       </article>
 
-      <article class="slide" id="slide-15">
-        <div class="slide-head"><span class="slide-num">15</span><h4>Juros: o preço de pagar depois</h4></div>
-        <div class="tela"><span class="lbl">Na tela</span><p><b>“À vista: R$&nbsp;1.000 · Parcelado: 10 × R$&nbsp;120 = R$&nbsp;1.200”</b>.</p></div>
+      <article class="slide" id="slide-21">
+        <div class="slide-head"><span class="slide-num">21</span><h4>Juros: o preço de pagar depois</h4><a class="ver-slide" data-anot-ui href="https://financeiro13-nova.github.io/Palestra-Saude-Financeira/#slide-21" target="_blank" rel="noopener" title="Abrir o slide 21 na apresentação">ver slide ↗</a></div>
+        <div class="tela"><span class="lbl">Na tela</span><p><b>À vista: R$&nbsp;1.000</b> · <b>Parcelado: 10 × R$&nbsp;120 = R$&nbsp;1.200</b> (R$&nbsp;1.000 + R$&nbsp;200) · “Atenção: cheque especial e rotativo do cartão costumam ser caros. Antes de parcelar ou pegar crédito, olhe o valor total.” Valores fictícios.</p></div>
         <div class="fala"><span class="lbl">Fala</span>
           <p class="dito">Juros são o valor a mais que você paga por usar um dinheiro que ainda não tem. Neste exemplo, pagar depois custou R$&nbsp;200 a mais. Dois casos merecem atenção: o cheque especial, que é um empréstimo automático quando a conta fica no negativo, e o rotativo do cartão, que é quando você paga só parte da fatura e o resto vira dívida com juros. Os dois costumam ser caros. Antes de parcelar ou pegar crédito, olhe o valor total.</p>
         </div>
         <aside class="nota"><span class="lbl">Confira antes</span><p>Se quiser citar a taxa média do Banco Central para crédito pessoal, confirme o número e o mês no site do BC antes.</p></aside>
       </article>
 
-      <article class="slide" id="slide-16">
-        <div class="slide-head"><span class="slide-num">16</span><h4>Quando a conta não fecha</h4></div>
-        <div class="tela"><span class="lbl">Na tela</span><p><b>“Renda: R$&nbsp;1.800 · Gastos essenciais: R$&nbsp;1.950 · Faltam R$&nbsp;150”</b> e três caminhos: <b>reorganizar gastos · renegociar dívidas · buscar mais renda</b>.</p></div>
+      <article class="slide" id="slide-22">
+        <div class="slide-head"><span class="slide-num">22</span><h4>Quando a conta não fecha</h4><a class="ver-slide" data-anot-ui href="https://financeiro13-nova.github.io/Palestra-Saude-Financeira/#slide-22" target="_blank" rel="noopener" title="Abrir o slide 22 na apresentação">ver slide ↗</a></div>
+        <div class="tela"><span class="lbl">Na tela</span><p><b>Renda de R$&nbsp;1.800</b> e <b>gastos essenciais de R$&nbsp;1.950</b>: faltam R$&nbsp;150. Três caminhos: reorganizar o que dá · renegociar prazos e valores com quem você deve · buscar mais renda, quando for possível. Frase: “Organizar ajuda a enxergar, mas não resolve sozinho uma renda que não cobre o básico.” Exemplo fictício: Bia.</p></div>
         <div class="fala"><span class="lbl">Fala</span>
-          <p class="dito">Esta é a Bia, outra pessoa fictícia. Só o básico dela já passa da renda. Aqui não adianta dizer “corta o cafezinho”. Nenhuma economia transforma R$&nbsp;1.800 em R$&nbsp;1.950. Organizar ajuda a enxergar o problema, mas, por si só, não resolve a falta de dinheiro para o básico. Existem três caminhos, e muitas vezes eles se combinam: reorganizar o que der, conversar com as pessoas ou empresas a quem você deve para renegociar prazos e valores, e procurar formas de aumentar a renda quando isso for possível. Ter dívida não faz de ninguém uma pessoa pior.</p>
+          <p class="dito">Esta é a Bia, outra pessoa fictícia. Só o básico dela já passa da renda. Aqui não adianta dizer “corta o cafezinho”. Nenhuma economia transforma R$&nbsp;1.800 em R$&nbsp;1.950. Organizar ajuda a enxergar o problema, mas, sozinho, não resolve quando a renda não cobre o básico. Existem três caminhos, e muitas vezes eles se combinam: reorganizar o que der, conversar com quem você deve para renegociar prazos e valores, e procurar formas de aumentar a renda quando isso for possível. Ter dívida não faz de ninguém uma pessoa pior.</p>
         </div>
       </article>
 
-      <!-- Bloco 6 -->
-      <h3 id="bloco-6">Bloco 6 — Imprevistos e pequenos objetivos <span class="tempo">48–54 min · slides 17–18</span></h3>
+      <!-- Bloco 7 — Imprevistos e objetivos -->
+      <h3 id="bloco-7">Bloco 7 — Imprevistos e objetivos <span class="tempo">50–54 min · slides 23–24</span></h3>
 
-      <article class="slide" id="slide-17">
-        <div class="slide-head"><span class="slide-num">17</span><h4>Imprevisto acontece</h4></div>
-        <div class="tela"><span class="lbl">Na tela</span><p>Uma escada: <b>R$&nbsp;100 → R$&nbsp;500 → R$&nbsp;1.000 → 1 mês de despesas</b>.</p></div>
+      <article class="slide" id="slide-23">
+        <div class="slide-head"><span class="slide-num">23</span><h4>Imprevisto acontece</h4><a class="ver-slide" data-anot-ui href="https://financeiro13-nova.github.io/Palestra-Saude-Financeira/#slide-23" target="_blank" rel="noopener" title="Abrir o slide 23 na apresentação">ver slide ↗</a></div>
+        <div class="tela"><span class="lbl">Na tela</span><p>Uma escada: <b>R$&nbsp;100 → R$&nbsp;500 → R$&nbsp;1.000 → 1 mês de despesas</b>, e a frase “Se hoje não sobra nada, o primeiro passo é fazer a conta fechar.”</p></div>
         <div class="fala"><span class="lbl">Fala</span>
           <p class="dito">Geladeira que quebra, remédio que não estava previsto, alguns dias sem trabalhar. Quando não há nada guardado, o imprevisto costuma virar dívida. A reserva de emergência é um dinheiro separado só para isso. Ninguém precisa começar com seis meses de salário. O primeiro degrau pode ser R$&nbsp;100. E, se hoje não sobra nada, tudo bem. O primeiro passo é fazer a conta fechar.</p>
         </div>
       </article>
 
-      <article class="slide" id="slide-18">
-        <div class="slide-head"><span class="slide-num">18</span><h4>Um pequeno objetivo</h4></div>
-        <div class="tela"><span class="lbl">Na tela</span><p><b>“O quê? · Quanto? · Até quando?”</b></p></div>
+      <article class="slide" id="slide-24">
+        <div class="slide-head"><span class="slide-num">24</span><h4>Um pequeno objetivo</h4><a class="ver-slide" data-anot-ui href="https://financeiro13-nova.github.io/Palestra-Saude-Financeira/#slide-24" target="_blank" rel="noopener" title="Abrir o slide 24 na apresentação">ver slide ↗</a></div>
+        <div class="tela"><span class="lbl">Na tela</span><p><b>O quê?</b> Ex.: material escolar sem parcelar · <b>Quanto?</b> O valor que cabe no seu mês · <b>Até quando?</b> Uma data no calendário. Frase: “Nome, valor e prazo tiram o ‘um dia eu guardo’ do papel.”</p></div>
         <div class="fala"><span class="lbl">Fala</span>
           <p class="dito">Um objetivo pode ser pequeno: comprar o material escolar sem parcelar, pagar uma conta atrasada, juntar para um passeio. Dar nome, valor e prazo ajuda a sair do “um dia eu guardo”. O valor certo é o que cabe na sua realidade, não na de outra pessoa.</p>
         </div>
       </article>
 
       <!-- Encerramento -->
-      <h3 id="bloco-encerramento">Encerramento <span class="tempo">54–60 min · slides 19–21 (+ 22 de apoio)</span></h3>
+      <h3 id="bloco-encerramento">Encerramento <span class="tempo">54–60 min · slides 25–27 (+ 28 de apoio)</span></h3>
 
-      <article class="slide" id="slide-19">
-        <div class="slide-head"><span class="slide-num">19</span><h4>Três ideias para levar</h4></div>
-        <div class="tela"><span class="lbl">Na tela</span><p>As três mensagens do <a href="#resumo" style="color:inherit">resumo final</a>.</p></div>
+      <article class="slide" id="slide-25">
+        <div class="slide-head"><span class="slide-num">25</span><h4>Três ideias para levar</h4><a class="ver-slide" data-anot-ui href="https://financeiro13-nova.github.io/Palestra-Saude-Financeira/#slide-25" target="_blank" rel="noopener" title="Abrir o slide 25 na apresentação">ver slide ↗</a></div>
+        <div class="tela"><span class="lbl">Na tela</span><p>1. <b>Conheça o dinheiro que realmente entra.</b> 2. <b>Saiba para onde ele vai e quando cada conta vence.</b> 3. <b>Olhe o total, não só a parcela, e proteja-se no seu ritmo.</b></p></div>
         <div class="fala"><span class="lbl">Fala</span>
-          <p class="dir">Leia cada uma devagar, com uma pausa entre elas. Não acrescente conteúdo novo.</p>
+          <p class="dir">Leia cada ideia devagar, com uma pausa entre elas. Não acrescente conteúdo novo. O que dizer em cada uma está no <a href="#resumo">resumo final</a>.</p>
         </div>
       </article>
 
-      <article class="slide" id="slide-20">
-        <div class="slide-head"><span class="slide-num">20</span><h4>Experimente esta semana</h4></div>
-        <div class="tela"><span class="lbl">Na tela</span><p><b>“Pegue o holerite · Liste as contas do mês · Anote a data de cada vencimento”</b>.</p></div>
+      <article class="slide" id="slide-26">
+        <div class="slide-head"><span class="slide-num">26</span><h4>Experimente esta semana</h4><a class="ver-slide" data-anot-ui href="https://financeiro13-nova.github.io/Palestra-Saude-Financeira/#slide-26" target="_blank" rel="noopener" title="Abrir o slide 26 na apresentação">ver slide ↗</a></div>
+        <div class="tela"><span class="lbl">Na tela</span><p><b>Veja quanto realmente cai na sua conta · Liste as contas do mês · Anote o dia de vencimento de cada uma</b> e “Se der, anote também o que gastar nos próximos 7 dias.”</p></div>
         <div class="fala"><span class="lbl">Fala</span>
           <p class="dito">Não precisa mudar tudo. Esta semana, faça só isso: veja quanto realmente cai na sua conta, liste as contas do mês e escreva o dia de vencimento de cada uma. Se der, anote também o que você gastar nos próximos sete dias. Quem quiser pode usar o modelo do exercício.</p>
         </div>
       </article>
 
-      <article class="slide" id="slide-21">
-        <div class="slide-head"><span class="slide-num">21</span><h4>Frase final</h4></div>
-        <div class="tela"><span class="lbl">Na tela</span><p><b>“Saúde financeira começa quando você aprende a enxergar o dinheiro que já passa pelas suas mãos.”</b></p></div>
+      <article class="slide" id="slide-27">
+        <div class="slide-head"><span class="slide-num">27</span><h4>Frase final</h4><a class="ver-slide" data-anot-ui href="https://financeiro13-nova.github.io/Palestra-Saude-Financeira/#slide-27" target="_blank" rel="noopener" title="Abrir o slide 27 na apresentação">ver slide ↗</a></div>
+        <div class="tela"><span class="lbl">Na tela</span><p><b>“Saúde financeira começa quando você passa a enxergar o dinheiro que já passa pelas suas mãos.”</b> e “Obrigado.”</p></div>
         <div class="fala"><span class="lbl">Fala</span>
-          <p class="dito">Talvez você não consiga mudar sua renda amanhã. Talvez não consiga cortar todas as despesas. Mas pode começar a entender para onde o seu dinheiro vai. Obrigado.</p>
+          <p class="dito">Talvez você não consiga mudar sua renda amanhã.</p>
+          <p class="dir">Pausa.</p>
+          <p class="dito">Talvez não consiga cortar todas as despesas.</p>
+          <p class="dir">Pausa.</p>
+          <p class="dito">Mas pode começar a entender para onde o seu dinheiro vai. Obrigado.</p>
+        </div>
+        <aside class="nota"><span class="lbl">Sugestão para o slide</span><p>Na frase do slide, “passa a enxergar” e “já passa” repetem o verbo. Uma troca simples: “Saúde financeira começa quando você aprende a enxergar o dinheiro que já passa pelas suas mãos.”</p></aside>
+      </article>
+
+      <article class="slide" id="slide-28">
+        <div class="slide-head"><span class="slide-num">28</span><h4>Fontes e referências (apoio)</h4><a class="ver-slide" data-anot-ui href="https://financeiro13-nova.github.io/Palestra-Saude-Financeira/#slide-28" target="_blank" rel="noopener" title="Abrir o slide 28 na apresentação">ver slide ↗</a></div>
+        <div class="tela"><span class="lbl">Na tela</span><p>Banco Central do Brasil: Pesquisa de Saúde Financeira do Brasileiro; Meu BC / Orçamento pessoal; Relatório de Cidadania Financeira 2025; Relatório de Estabilidade Financeira; Estatísticas Monetárias e de Crédito · CVM: Educação Financeira · SUSEP: Educação Financeira e orçamento.</p></div>
+        <div class="fala"><span class="lbl">Fala</span>
+          <p class="dir">Slide de apoio: deixe no fim, sem apresentar. Os valores em reais da palestra são exemplos fictícios.</p>
         </div>
       </article>
 
-      <article class="slide" id="slide-22">
-        <div class="slide-head"><span class="slide-num">22</span><h4>Fontes (apoio)</h4></div>
-        <div class="tela"><span class="lbl">Na tela</span><p>As referências do Banco Central, da CVM e da SUSEP que já estão no seu material.</p></div>
-        <div class="fala"><span class="lbl">Fala</span>
-          <p class="dir">Deixe este slide no fim, sem apresentá-lo.</p>
-        </div>
-      </article>
     </section>
 
     <!-- ===================== RESUMO ===================== -->
@@ -815,7 +897,7 @@
           <ul>
             <li>Os números do Banco Central (56%, 69%, 15,1 milhões e a taxa média de 63% ao ano em abril de 2026). Eles não foram verificados na fonte. Confira valor, ano e nome da pesquisa no site do BC antes de usar.</li>
             <li>Quem é o público: colegas da mesma empresa ou de fora, quantas pessoas, se terão papel e caneta.</li>
-            <li>Se a duração é mesmo de 60 minutos.</li>
+            <li>Se a duração é mesmo de 60 minutos. Com o bloco 4 (cronograma), os tempos de cada parte foram redistribuídos para caber nos 60 minutos; ajuste se precisar.</li>
             <li>Como você quer se apresentar no início. O roteiro não traz nada sobre você além de ser analista financeiro da área de comissionamento.</li>
             <li>Se haverá material impresso (como o modelo do exercício) para entregar ao público.</li>
           </ul>
@@ -831,14 +913,15 @@
           <ul>
             <li>Os dois roteiros tinham tempos, números de slide e frases diferentes para o mesmo tema. Ficou um roteiro único, com tempos que somam 60 minutos.</li>
             <li>Os exemplos usavam salários de R$&nbsp;2.500 e R$&nbsp;3.000, limites de R$&nbsp;4.000 e R$&nbsp;5.000, parcelas de 10 × R$&nbsp;150 e 12 × R$&nbsp;100. Agora há uma única pessoa fictícia, a Ana, com R$&nbsp;2.500 líquidos, do começo ao fim.</li>
-            <li>As categorias “necessidades, desejos e futuro” viraram “essenciais, compromissos e ajustáveis”, como você pediu. O “futuro” foi para o bloco 6.</li>
+            <li>As categorias “necessidades, desejos e futuro” viraram “essenciais, compromissos e ajustáveis”, como você pediu. O “futuro” ficou nos blocos 4 e 7.</li>
             <li>Os dados do Banco Central saíram do meio da palestra e ficaram em um único slide na abertura.</li>
           </ul>
 
           <h4>Acrescentado (não estava no material)</h4>
           <ul>
             <li>Salário bruto × líquido e o holerite (bloco 2), com descontos fictícios.</li>
-            <li>Datas de vencimento e o calendário do mês (bloco 4).</li>
+            <li>Datas de vencimento e o calendário do mês (bloco 5).</li>
+            <li>O bloco 4, “Seu cronograma financeiro” (slides 10 a 15): cronograma, aporte, prazos dos objetivos, o cronograma da Ana e o que fazer quando não sobra nada.</li>
             <li>O exemplo de juros (R$&nbsp;1.000 à vista ou 10 × R$&nbsp;120 parcelado) e a explicação do cheque especial e do rotativo.</li>
             <li>Explicação de cada termo na primeira vez em que aparece.</li>
           </ul>
@@ -852,7 +935,7 @@
             <li>A lista longa de ideias de renda extra. Ficou “buscar mais renda quando possível”, sem prometer resultado.</li>
           </ul>
 
-          <p><strong>Cálculos conferidos:</strong> R$&nbsp;10 × 30 = R$&nbsp;300; 10 × R$&nbsp;150 = R$&nbsp;1.500; R$&nbsp;150 + 80 + 100 + 120 + 200 = R$&nbsp;650; R$&nbsp;2.800 − R$&nbsp;300 = R$&nbsp;2.500; mês da Ana fecha com sobra de R$&nbsp;160; R$&nbsp;1.800 − R$&nbsp;1.950 = −R$&nbsp;150.</p>
+          <p><strong>Cálculos conferidos:</strong> R$&nbsp;10 × 30 = R$&nbsp;300; 10 × R$&nbsp;150 = R$&nbsp;1.500; R$&nbsp;150 + 80 + 100 + 120 + 200 = R$&nbsp;650; R$&nbsp;2.800 − R$&nbsp;300 = R$&nbsp;2.500; mês da Ana fecha com sobra de R$&nbsp;160; cronograma da Ana: 5 × R$&nbsp;100 + 5 × R$&nbsp;60 e depois 10 × R$&nbsp;160, em 15 meses; R$&nbsp;1.800 − R$&nbsp;1.950 = −R$&nbsp;150.</p>
         </div>
       </details>
     </section>
@@ -957,10 +1040,10 @@
       <form class="anot-gh-form" autocomplete="off">
         <p>Quem abre o link vê as anotações sem precisar de nada. Para <b>criar e editar</b>, cada computador precisa ser conectado uma vez com um token do GitHub:</p>
         <ol>
-          <li>Abra <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">github.com/settings/personal-access-tokens/new</a>.</li>
+          <li><a class="anot-link-token" href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">Abra este link</a>: o GitHub já vem com nome, validade (1 ano) e permissão preenchidos.</li>
           <li>Em <b>Repository access</b>, escolha <b>Only select repositories</b> e marque o repositório da palestra.</li>
-          <li>Em <b>Permissions → Repository permissions → Contents</b>, escolha <b>Read and write</b>.</li>
-          <li>Clique em <b>Generate token</b>, copie e cole abaixo.</li>
+          <li>Em <b>Permissions</b>, confira se <b>Contents</b> está como <b>Read and write</b>.</li>
+          <li>Clique em <b>Generate token</b>, copie o código (começa com <code>github_pat_</code>) e cole abaixo.</li>
         </ol>
         <label>Usuário ou organização do GitHub<input name="owner" spellcheck="false"></label>
         <label>Repositório<input name="repo" spellcheck="false"></label>
@@ -1453,7 +1536,14 @@
     });
     atualizarVazio();
   }
+  function linkToken() {
+    var e = encodeURIComponent;
+    return 'https://github.com/settings/personal-access-tokens/new?name=' + e('Anotações da palestra') +
+      '&description=' + e('Salvar marcações e comentários do roteiro da palestra no repositório') +
+      '&expires_in=366&contents=write' + (cfg.owner ? '&target_name=' + e(cfg.owner) : '');
+  }
   function preencherForm() {
+    var lt = $('.anot-link-token', painel); if (lt) lt.href = linkToken();
     ['owner', 'repo', 'branch', 'pasta'].forEach(function (k) { ghForm.elements[k].value = cfg[k] || ''; });
     ghForm.elements.token.value = '';
     ghForm.elements.token.placeholder = cfg.token ? 'conectado (cole outro para trocar)' : 'github_pat_…';
